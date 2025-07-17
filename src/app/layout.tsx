@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import StyledComponentsRegistry from "@/lib/registry";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "MiniTax",
@@ -16,7 +17,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <StyledComponentsRegistry>
+          <Header />
           <main>{children}</main>
+          <footer>© 2025 MiniTax. 프리랜서를 위한 스마트한 세금 계산기</footer>
         </StyledComponentsRegistry>
       </body>
     </html>
