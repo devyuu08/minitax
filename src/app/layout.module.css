@@ -15,7 +15,8 @@
 }
 
 .container > footer {
-  padding: 100px 0px;
+  padding: 50px 0px;
+  font-size: small;
   text-align: center;
   color: gray;
 }
