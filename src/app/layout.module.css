@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column; 
+  max-width: 600px;
+  min-height: 100vh;
+  margin: 0 auto;
+  border: 1px solid red;
+  padding: 0px 15px;
+}
+
+.container > main {
+  flex: 1;
+  justify-items: center;
+  padding-top: 30px;
+}
+
+.container > footer {
+  padding: 100px 0px;
+  text-align: center;
+  color: gray;
+}
