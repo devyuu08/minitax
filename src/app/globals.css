@@ -1,4 +1,4 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 
 * {
   box-sizing: border-box;
@@ -8,8 +8,9 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #fefefe;
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background: linear-gradient(90deg, #eff6ff 0%, #eef2ff 50%, #faf5ff 100%);
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+    sans-serif;
   color: #222;
 }
 
