@@ -14,8 +14,9 @@ export default function Page() {
         <h1 className={styles.title}>종합소득세 계산기</h1>
         <p className={styles.description}>
           프리랜서와 개인사업자를 위한 스마트한 세금 계산
+          <br />
+          복잡한 세법도 이제 간단하게
         </p>
-        <p className={styles.description}>복잡한 세법도 이제 간단하게</p>
 
         <div className={styles.featureList}>
           <div className={styles.featureItem}>

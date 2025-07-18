@@ -1,0 +1,71 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.headerSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 2rem;
+}
+
+.subTitle {
+  font-size: 2.125rem;
+  font-weight: 600;
+  color: #374151; /* gray-700 */
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-size: 0.875rem;
+  color: #6b7280; /* gray-500 */
+}
+
+.greenDot {
+  width: 8px;
+  height: 8px;
+  background-color: #34d399; /* green-400 */
+  border-radius: 9999px;
+}
+
+.title {
+  font-size: 3.5rem; /* 약 48px */
+  font-weight: 600;
+  color: #111827; /* gray-900 */
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.description {
+  font-size: 1.125rem;
+  color: #9ca3af; /* gray-400 */
+  line-height: 1.6;
+  margin-top: -0.25rem;
+  font-weight: 200;
+  text-align: center;
+}
+
+.featureList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #374151; /* gray-700 */
+}
