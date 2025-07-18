@@ -5,7 +5,7 @@ import styles from "./CalculatorForm.module.css";
 
 export default function CalculatorForm() {
   return (
-    <>
+    <div className={styles.container}>
       <form className={styles.form}>
         {/* 상단 제목 영역 */}
         <div className={styles.formHeader}>
@@ -20,56 +20,64 @@ export default function CalculatorForm() {
 
         {/* 연소득 입력 */}
         <div className={styles.field}>
-          <label htmlFor="income">연소득(세전)</label>
-          <input
-            type="number"
-            id="income"
-            name="income"
-            inputMode="numeric"
-            placeholder="50,000,000"
-            min={0}
-            required
-          />
-          원
-          <p className={styles.helperText}>
-            사업소득, 프리랜서 수입 등 모든 소득 포함
-          </p>
+          <div className={styles.labelRow}>
+            <span className={styles.greenDot} />
+            <label htmlFor="income">연소득(세전)</label>
+          </div>
+          <div className={styles.inputWrapper}>
+            <input
+              type="number"
+              id="income"
+              name="income"
+              inputMode="numeric"
+              placeholder="50,000,000"
+              min={0}
+              required
+            />
+            <span className={styles.inputSuffix}>원</span>
+          </div>
+          <p>사업소득, 프리랜서 수입 등 모든 소득 포함</p>
         </div>
 
         {/* 필요경비 입력 */}
         <div className={styles.field}>
-          <label htmlFor="expense">필요경비</label>
-          <input
-            type="number"
-            id="expense"
-            name="expense"
-            inputMode="numeric"
-            placeholder="10,000,000"
-            min={0}
-            required
-          />
-          원
-          <p className={styles.helperText}>사업 관련 지출, 재료비, 임차료 등</p>
+          <div className={styles.labelRow}>
+            <span className={styles.yellowDot} />
+            <label htmlFor="expense">필요경비</label>
+          </div>
+          <div className={styles.inputWrapper}>
+            <input
+              type="number"
+              id="expense"
+              name="expense"
+              inputMode="numeric"
+              placeholder="10,000,000"
+              min={0}
+              required
+            />
+            <span className={styles.inputSuffix}>원</span>
+          </div>
+          <p>사업 관련 지출, 재료비, 임차료 등</p>
         </div>
 
         {/* 제출 버튼 */}
         <button type="submit" className={styles.submit}>
-          계산하기
+          세금 계산하기
         </button>
       </form>
 
       {/* 하단 안내 박스 */}
       <section className={styles.noticeBox}>
-        <div className={styles.noticeTitle}>
-          <ShieldCheck size={16} color="#3b82f6" />
-          <span>안전하고 정확한 계산</span>
+        <div className={styles.noticeHeader}>
+          <ShieldCheck size={20} color="#2563eb" />
+          <h3>계산 방식 안내</h3>
         </div>
-        <ul className={styles.noticeList}>
-          <li>2024년 최신 세율표 적용</li>
-          <li>입력 정보는 저장되지 않음</li>
-          <li>국세청 공식 계산 방식 사용</li>
-        </ul>
+        <p>
+          이 계산기는 2024년 세율 기준으로 간이 계산된 결과입니다. 실제 세액은
+          각종 공제와 감면에 따라 달라질 수 있으니, 정확한 신고를 위해서는
+          세무사와 상담하시기 바랍니다.
+        </p>
       </section>
-    </>
+    </div>
   );
 }
