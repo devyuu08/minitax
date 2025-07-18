@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  border: 1px solid red;
 }
 
 .form {
@@ -139,6 +138,14 @@
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   background: linear-gradient(90deg, #2563eb, #4f46e5);
+}
+
+.disabled {
+  background: #e5e7eb; /* Tailwind gray-200 */
+  color: #9ca3af; /* Tailwind gray-400 */
+  box-shadow: none;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .noticeBox {

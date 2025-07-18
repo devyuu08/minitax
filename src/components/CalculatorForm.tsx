@@ -1,9 +1,30 @@
 "use client";
 
-import { ShieldCheck } from "lucide-react";
+import { Lock, ShieldCheck } from "lucide-react";
 import styles from "./CalculatorForm.module.css";
+import { useEffect, useState } from "react";
 
 export default function CalculatorForm() {
+  const [income, setIncome] = useState("");
+  const [expense, setExpense] = useState("");
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    const parsedIncome = parseInt(income, 10);
+    const parsedExpense = parseInt(expense, 10);
+
+    if (
+      !isNaN(parsedIncome) &&
+      parsedIncome > 0 &&
+      !isNaN(parsedExpense) &&
+      parsedExpense >= 0
+    ) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  }, [income, expense]);
+
   return (
     <div className={styles.container}>
       <form className={styles.form}>
@@ -32,6 +53,7 @@ export default function CalculatorForm() {
               inputMode="numeric"
               placeholder="50,000,000"
               min={0}
+              onChange={(e) => setIncome(e.target.value)}
               required
             />
             <span className={styles.inputSuffix}>원</span>
@@ -53,6 +75,7 @@ export default function CalculatorForm() {
               inputMode="numeric"
               placeholder="10,000,000"
               min={0}
+              onChange={(e) => setExpense(e.target.value)}
               required
             />
             <span className={styles.inputSuffix}>원</span>
@@ -61,8 +84,19 @@ export default function CalculatorForm() {
         </div>
 
         {/* 제출 버튼 */}
-        <button type="submit" className={styles.submit}>
-          세금 계산하기
+        <button
+          type="submit"
+          className={`${styles.submit} ${!isActive ? styles.disabled : ""}`}
+          disabled={!isActive}
+        >
+          {!isActive ? (
+            <>
+              <Lock size={16} />
+              정보를 입력해주세요
+            </>
+          ) : (
+            "세금 계산하기"
+          )}
         </button>
       </form>
 
