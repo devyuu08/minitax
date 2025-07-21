@@ -3,11 +3,17 @@
 import { Lock, ShieldCheck } from "lucide-react";
 import styles from "./CalculatorForm.module.css";
 import { useEffect, useState } from "react";
+import { useTaxContext } from "@/context/TaxContext";
+import { useRouter } from "next/navigation";
+import calculateTax from "@/lib/calculateTax";
 
 export default function CalculatorForm() {
   const [income, setIncome] = useState("");
   const [expense, setExpense] = useState("");
   const [isActive, setIsActive] = useState(false);
+
+  const { setResult } = useTaxContext();
+  const router = useRouter();
 
   useEffect(() => {
     const parsedIncome = parseInt(income, 10);
@@ -25,9 +31,23 @@ export default function CalculatorForm() {
     }
   }, [income, expense]);
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const incomeValue = parseInt(income, 10);
+    const expenseValue = parseInt(expense, 10);
+
+    if (isNaN(incomeValue) || isNaN(expenseValue)) return;
+
+    const result = calculateTax({ income: incomeValue, expense: expenseValue });
+
+    setResult(result);
+    router.push("/result");
+  };
+
   return (
     <div className={styles.container}>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         {/* 상단 제목 영역 */}
         <div className={styles.formHeader}>
           <div className={styles.iconWrapper}>
