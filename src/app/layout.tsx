@@ -3,6 +3,7 @@ import "./globals.css";
 import StyledComponentsRegistry from "@/lib/registry";
 import style from "./layout.module.css";
 import Header from "@/components/Header";
+import { TaxProvider } from "@/context/TaxContext";
 
 export const metadata: Metadata = {
   title: "MiniTax",
@@ -18,13 +19,15 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <StyledComponentsRegistry>
-          <Header />
-          <div className={style.container}>
-            <main>{children}</main>
-            <footer>
-              © 2025 MiniTax. 프리랜서를 위한 스마트한 세금 계산기
-            </footer>
-          </div>
+          <TaxProvider>
+            <Header />
+            <div className={style.container}>
+              <main>{children}</main>
+              <footer>
+                © 2025 MiniTax. 프리랜서를 위한 스마트한 세금 계산기
+              </footer>
+            </div>
+          </TaxProvider>
         </StyledComponentsRegistry>
       </body>
     </html>
