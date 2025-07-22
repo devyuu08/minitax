@@ -34,7 +34,18 @@ export default function calculateTax({ income, expense }: TaxInput): TaxResult {
     deduction = 65_940_000;
   }
 
+  // 소득세
   const taxAmount = Math.floor(taxableIncome * rate - deduction);
+
+  // 지방소득세 (소득세의 10%)
+  const localTax = Math.floor(taxAmount * 0.1);
+
+  // 총 납부세액
+  const finalTax = taxAmount + localTax;
+
+  // 실효세율 (총세금 / 총소득 * 100)
+  const effectiveTaxRate =
+    income > 0 ? Number(((finalTax / income) * 100).toFixed(2)) : 0;
 
   return {
     income,
@@ -43,5 +54,8 @@ export default function calculateTax({ income, expense }: TaxInput): TaxResult {
     taxAmount: Math.max(taxAmount, 0),
     appliedRate: rate,
     deduction,
+    localTax,
+    finalTax,
+    effectiveTaxRate,
   };
 }
