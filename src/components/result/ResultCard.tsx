@@ -1,35 +1,21 @@
 "use client";
 
-import { useTaxContext } from "@/context/TaxContext";
+import { TaxResult } from "@/types/tax";
 import styles from "./ResultCard.module.css";
+import SummaryCard from "./SummaryCards";
 
-export default function ResultCard() {
-  const { result } = useTaxContext();
+interface ResultCardProps {
+  result: TaxResult;
+}
 
-  if (!result) {
-    return <p>계산 결과가 없습니다. 홈으로 돌아가 다시 입력해주세요.</p>;
-  }
-
+export default function ResultCard({ result }: ResultCardProps) {
   return (
-    <div className={styles.card}>
-      <div className={styles.row}>
-        <span className={styles.label}>과세표준</span>
-        <span>{result.taxableIncome.toLocaleString()} 원</span>
-      </div>
-      <div className={styles.row}>
-        <span className={styles.label}>적용 세율</span>
-        <span>{(result.appliedRate * 100).toFixed(0)}%</span>
-      </div>
-      <div className={styles.row}>
-        <span className={styles.label}>누진공제</span>
-        <span>{result.deduction.toLocaleString()} 원</span>
-      </div>
-      <div className={styles.rowTotal}>
-        <span className={styles.label}>예상 세금</span>
-        <span className={styles.amount}>
-          {result.taxAmount.toLocaleString()} 원
-        </span>
-      </div>
-    </div>
+    <section className={styles.container}>
+      <SummaryCard result={result} />
+
+      {/*소득 내역 및 세액 계산 박스*/}
+
+      {/*AI 설명 박스*/}
+    </section>
   );
 }
