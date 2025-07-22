@@ -1,6 +1,6 @@
 import styles from "./page.module.css";
 import { ShieldCheck, Bot, Lock } from "lucide-react";
-import CalculatorForm from "@/components/CalculatorForm";
+import CalculatorForm from "@/components/calculator/CalculatorForm";
 
 export default function Page() {
   return (
