@@ -3,6 +3,7 @@
 import { TaxResult } from "@/types/tax";
 import styles from "./ResultCard.module.css";
 import SummaryCard from "./SummaryCards";
+import IncomeBreakdownCard from "./IncomeBreakdownCard";
 
 interface ResultCardProps {
   result: TaxResult;
@@ -14,6 +15,7 @@ export default function ResultCard({ result }: ResultCardProps) {
       <SummaryCard result={result} />
 
       {/*소득 내역 및 세액 계산 박스*/}
+      <IncomeBreakdownCard result={result} />
 
       {/*AI 설명 박스*/}
     </section>
