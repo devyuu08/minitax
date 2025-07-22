@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   padding: 2rem 1.2rem;
-  max-width: 720px;
+  max-width: 1000px;
   margin: 0 auto;
   align-items: center;
 }
@@ -27,4 +27,44 @@
   font-size: 1rem;
   color: #555;
   margin-bottom: 2rem;
+}
+
+.errorCard {
+  background-color: #f8f9fb;
+  border: 1px solid #e0e3e7;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  max-width: 420px;
+  margin: 5rem auto;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+}
+
+.errorCard h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d2d2d;
+  margin-bottom: 1rem;
+}
+
+.errorCard p {
+  font-size: 1rem;
+  color: #5f6368;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.backButton {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #475569;
+  color: #ffffff;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.backButton:hover {
+  background-color: #334155; /* slate-800 */
 }
