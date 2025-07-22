@@ -1,11 +1,13 @@
-// lib/__tests__/calculateTax.test.ts
-import calculateTax, { TaxInput } from "../calculateTax";
+import { TaxInput } from "@/types/tax";
+import calculateTax from "../calculateTax";
 
 describe("calculateTax()", () => {
   it("1. 6% 구간 (14,000,000 이하)", () => {
     const input: TaxInput = { income: 20_000_000, expense: 4_500_000 };
     const result = calculateTax(input);
 
+    expect(result.income).toBe(20_000_000);
+    expect(result.expense).toBe(4_500_000);
     expect(result.taxableIncome).toBe(14_000_000);
     expect(result.appliedRate).toBe(0.06);
     expect(result.deduction).toBe(0);
@@ -18,6 +20,8 @@ describe("calculateTax()", () => {
     const taxable = 60_000_000 - 9_500_000 - 1_500_000;
     const expected = Math.floor(taxable * 0.15 - 1_260_000);
 
+    expect(result.income).toBe(input.income);
+    expect(result.expense).toBe(input.expense);
     expect(result.taxableIncome).toBe(taxable);
     expect(result.appliedRate).toBe(0.15);
     expect(result.deduction).toBe(1_260_000);
@@ -30,6 +34,8 @@ describe("calculateTax()", () => {
     const expected = Math.floor(taxable * 0.24 - 5_760_000);
     const result = calculateTax(input);
 
+    expect(result.income).toBe(input.income);
+    expect(result.expense).toBe(input.expense);
     expect(result.taxableIncome).toBe(taxable);
     expect(result.appliedRate).toBe(0.24);
     expect(result.deduction).toBe(5_760_000);
@@ -42,6 +48,8 @@ describe("calculateTax()", () => {
     const expected = Math.floor(taxable * 0.35 - 15_440_000);
     const result = calculateTax(input);
 
+    expect(result.income).toBe(input.income);
+    expect(result.expense).toBe(input.expense);
     expect(result.taxableIncome).toBe(taxable);
     expect(result.appliedRate).toBe(0.35);
     expect(result.deduction).toBe(15_440_000);
@@ -54,6 +62,8 @@ describe("calculateTax()", () => {
     const expected = Math.floor(taxable * 0.45 - 65_940_000);
     const result = calculateTax(input);
 
+    expect(result.income).toBe(input.income);
+    expect(result.expense).toBe(input.expense);
     expect(result.taxableIncome).toBe(taxable);
     expect(result.appliedRate).toBe(0.45);
     expect(result.deduction).toBe(65_940_000);
@@ -64,6 +74,8 @@ describe("calculateTax()", () => {
     const input: TaxInput = { income: 1_000_000, expense: 1_000_000 };
     const result = calculateTax(input);
 
+    expect(result.income).toBe(input.income);
+    expect(result.expense).toBe(input.expense);
     expect(result.taxableIncome).toBe(0);
     expect(result.taxAmount).toBe(0);
     expect(result.appliedRate).toBe(0.06);
