@@ -37,6 +37,8 @@ export default function calculateTax({ income, expense }: TaxInput): TaxResult {
   const taxAmount = Math.floor(taxableIncome * rate - deduction);
 
   return {
+    income,
+    expense,
     taxableIncome,
     taxAmount: Math.max(taxAmount, 0),
     appliedRate: rate,
