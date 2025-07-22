@@ -7,6 +7,28 @@
   align-items: center;
 }
 
+.topBar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.recalculateButton {
+  background-color: #f1f5f9;
+  color: #1e3a8a;
+  border: 1px solid #cbd5e1;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.recalculateButton:hover {
+  background-color: #e0f2fe;
+}
+
 .badge {
   display: inline-block;
   background-color: #e0f2fe;
@@ -67,4 +89,11 @@
 
 .backButton:hover {
   background-color: #334155; /* slate-800 */
+}
+
+@media (max-width: 480px) {
+  .recalculateButton {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
 }

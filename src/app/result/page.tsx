@@ -25,6 +25,11 @@ export default function Page() {
 
   return (
     <div className={styles.container}>
+      <div className={styles.topBar}>
+        <Link href="/calculator" className={styles.recalculateButton}>
+          다시 계산하기
+        </Link>
+      </div>
       <p className={styles.badge}>계산 완료</p>
       <h1 className={styles.title}>세금 계산 결과</h1>
       <p className={styles.sub}>
