@@ -53,8 +53,10 @@ export default function GptSummary({ result }: { result: TaxResult }) {
   }, [result]);
 
   useEffect(() => {
-    fetchSummary();
-  }, [fetchSummary]);
+    if (!summary) {
+      fetchSummary();
+    }
+  }, [fetchSummary, summary]);
 
   return (
     <section className={styles.container}>
