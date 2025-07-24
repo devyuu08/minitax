@@ -23,7 +23,7 @@ export default function ResultCard({ result }: ResultCardProps) {
       </div>
 
       {/*AI 설명 박스*/}
-      <GptSummary />
+      <GptSummary result={result} />
     </section>
   );
 }
