@@ -5,6 +5,7 @@ import styles from "./ResultCard.module.css";
 import SummaryCard from "./SummaryCards";
 import IncomeBreakdownCard from "./IncomeBreakdownCard";
 import TaxCalculationCard from "./TaxCalculationCard";
+import GptSummary from "./GptSummary";
 
 interface ResultCardProps {
   result: TaxResult;
@@ -22,6 +23,7 @@ export default function ResultCard({ result }: ResultCardProps) {
       </div>
 
       {/*AI 설명 박스*/}
+      <GptSummary result={result} />
     </section>
   );
 }
