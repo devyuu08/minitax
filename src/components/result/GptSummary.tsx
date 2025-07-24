@@ -2,7 +2,13 @@
 
 import { useCallback, useEffect, useState } from "react";
 import styles from "./GptSummary.module.css";
-import { Bot, Loader2, MessageCircle } from "lucide-react";
+import {
+  AlertTriangle,
+  Bot,
+  Lightbulb,
+  Loader2,
+  MessageCircle,
+} from "lucide-react";
 import { getGptSummary } from "@/lib/actions/gptSummary";
 import { TaxResult } from "@/types/tax";
 import { getTaxRateLabel } from "@/lib/getTaxRateLabel";
@@ -104,6 +110,17 @@ export default function GptSummary({ result }: { result: TaxResult }) {
             </ul>
           </div>
         )}
+      </div>
+
+      <div className={styles.buttonWrapper}>
+        <button className={`${styles.labelButton} ${styles.strategy}`}>
+          <Lightbulb size={16} style={{ marginRight: 6 }} />
+          절세 전략
+        </button>
+        <button className={`${styles.labelButton} ${styles.warning}`}>
+          <AlertTriangle size={16} style={{ marginRight: 6 }} />
+          신고 유의사항
+        </button>
       </div>
     </section>
   );
