@@ -5,6 +5,7 @@ import styles from "./GptSummary.module.css";
 import { Bot, Loader2, MessageCircle } from "lucide-react";
 import { getGptSummary } from "@/lib/actions/gptSummary";
 import { TaxResult } from "@/types/tax";
+import { getTaxRateLabel } from "@/lib/getTaxRateLabel";
 
 // const mockSummary = [
 //   "귀하의 <strong>연소득은 50,000,000원</strong>이고, <strong>필요경비는 10,000,000원</strong>으로 계산되었습니다.",
@@ -67,7 +68,7 @@ export default function GptSummary({ result }: { result: TaxResult }) {
         </button>
       </div>
 
-      <div className={styles.label}>📉 표준세율 구간에 해당합니다</div>
+      <div className={styles.label}>{getTaxRateLabel(result.appliedRate)}</div>
 
       <div className={styles.gpt_wrapper}>
         <div className={styles.title}>
