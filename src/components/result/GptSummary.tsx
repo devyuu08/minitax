@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./GptSummary.module.css";
 import { Bot, Loader2, MessageCircle } from "lucide-react";
 import { getGptSummary } from "@/lib/actions/gptSummary";
@@ -20,34 +20,35 @@ export default function GptSummary({ result }: { result: TaxResult }) {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchSummary = async () => {
-      try {
-        setLoading(true);
-        const input = `
-          연소득: ${result.income.toLocaleString()}원
-          필요경비: ${result.expense.toLocaleString()}원
-          순소득: ${(result.income - result.expense).toLocaleString()}원
-          과세표준: ${result.taxableIncome.toLocaleString()}원
-          적용 세율: ${(result.appliedRate * 100).toFixed(1)}%
-          누진공제: ${result.deduction.toLocaleString()}원
-          산출세액: ${result.taxAmount.toLocaleString()}원
-          지방소득세: ${result.localTax.toLocaleString()}원
-          실효세율: ${(result.effectiveTaxRate * 100).toFixed(2)}%
-          총 납부세액: ${result.finalTax.toLocaleString()}원
-          `;
-        const res = await getGptSummary(input);
-        setSummary(res);
-      } catch (err) {
-        console.error("요약 실패:", err);
-        setError("요약에 실패했습니다.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchSummary();
+  const fetchSummary = useCallback(async () => {
+    try {
+      setLoading(true);
+      const input = `
+        연소득: ${result.income.toLocaleString()}원
+        필요경비: ${result.expense.toLocaleString()}원
+        순소득: ${(result.income - result.expense).toLocaleString()}원
+        과세표준: ${result.taxableIncome.toLocaleString()}원
+        적용 세율: ${(result.appliedRate * 100).toFixed(1)}%
+        누진공제: ${result.deduction.toLocaleString()}원
+        산출세액: ${result.taxAmount.toLocaleString()}원
+        지방소득세: ${result.localTax.toLocaleString()}원
+        실효세율: ${(result.effectiveTaxRate * 100).toFixed(2)}%
+        총 납부세액: ${result.finalTax.toLocaleString()}원
+      `;
+      const res = await getGptSummary(input);
+      setSummary(res);
+      setError(null);
+    } catch (err) {
+      console.error("요약 실패:", err);
+      setError("요약에 실패했습니다.");
+    } finally {
+      setLoading(false);
+    }
   }, [result]);
+
+  useEffect(() => {
+    fetchSummary();
+  }, [fetchSummary]);
 
   return (
     <section className={styles.container}>
@@ -62,8 +63,16 @@ export default function GptSummary({ result }: { result: TaxResult }) {
           </div>
         </div>
 
-        <button className={styles.resetButton}>
-          <Loader2 size={14} />
+        <button
+          className={styles.resetButton}
+          onClick={fetchSummary}
+          disabled={loading}
+        >
+          {loading ? (
+            <Loader2 size={14} className={styles.spinner} />
+          ) : (
+            <Loader2 size={14} />
+          )}
           다시 설명
         </button>
       </div>
