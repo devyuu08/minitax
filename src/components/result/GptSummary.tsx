@@ -83,10 +83,15 @@ export default function GptSummary({ result }: { result: TaxResult }) {
         ) : error ? (
           <p className={styles.error}>{error}</p>
         ) : (
-          <div className={styles.summary}>
-            {summary?.split("\n").map((line, i) => (
-              <p key={i}>{line}</p>
-            ))}
+          <div>
+            <ul className={styles.list}>
+              {summary
+                ?.split("\n")
+                .filter((line) => line.trim() !== "")
+                .map((line, i) => (
+                  <li key={i} dangerouslySetInnerHTML={{ __html: line }} />
+                ))}
+            </ul>
           </div>
         )}
       </div>
