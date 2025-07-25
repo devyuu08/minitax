@@ -36,7 +36,8 @@ type Action =
   | { type: "SET_SUMMARY"; payload: string }
   | { type: "SET_STRATEGY"; payload: string }
   | { type: "SET_WARNING"; payload: string }
-  | { type: "RESET_ERROR" };
+  | { type: "RESET_ERROR" }
+  | { type: "RESET_ALL" };
 
 function gptReducer(state: GptState, action: Action): GptState {
   switch (action.type) {
@@ -52,6 +53,15 @@ function gptReducer(state: GptState, action: Action): GptState {
       return { ...state, warning: action.payload, loading: null };
     case "RESET_ERROR":
       return { ...state, error: null };
+    case "RESET_ALL":
+      return {
+        summary: null,
+        strategy: null,
+        warning: null,
+        loading: "default",
+        error: null,
+      };
+
     default:
       return state;
   }
@@ -68,6 +78,7 @@ export default function GptSummary({ result }: { result: TaxResult }) {
 
   const fetchSummary = useCallback(async () => {
     try {
+      dispatch({ type: "RESET_ALL" });
       dispatch({ type: "LOADING", payload: "default" });
       const res = await getGptSummary("default", result);
       dispatch({ type: "SET_SUMMARY", payload: res });
