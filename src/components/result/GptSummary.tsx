@@ -69,19 +69,6 @@ export default function GptSummary({ result }: { result: TaxResult }) {
   const fetchSummary = useCallback(async () => {
     try {
       dispatch({ type: "LOADING", payload: "default" });
-
-      const input = `
-        연소득: ${result.income.toLocaleString()}원
-        필요경비: ${result.expense.toLocaleString()}원
-        순소득: ${(result.income - result.expense).toLocaleString()}원
-        과세표준: ${result.taxableIncome.toLocaleString()}원
-        적용 세율: ${(result.appliedRate * 100).toFixed(1)}%
-        누진공제: ${result.deduction.toLocaleString()}원
-        산출세액: ${result.taxAmount.toLocaleString()}원
-        지방소득세: ${result.localTax.toLocaleString()}원
-        실효세율: ${(result.effectiveTaxRate * 100).toFixed(2)}%
-        총 납부세액: ${result.finalTax.toLocaleString()}원
-      `;
       const res = await getGptSummary("default", result);
       dispatch({ type: "SET_SUMMARY", payload: res });
     } catch (err) {
@@ -146,20 +133,25 @@ export default function GptSummary({ result }: { result: TaxResult }) {
       <div className={styles.label}>{getTaxRateLabel(result.appliedRate)}</div>
 
       {/* 기본 요약 영역 */}
-      {state.loading === "default" ? (
-        <div className={styles.loading}>
-          <Loader2 className={styles.spinner} />
-          GPT가 내용을 정리 중이에요...
-        </div>
-      ) : state.error === "default" ? (
-        <p className={styles.error}>요약에 실패했습니다.</p>
-      ) : (
-        <GptSection
-          icon={<MessageCircle size={20} />}
-          title="MiniTax 요약 설명"
-          content={state.summary}
-        />
-      )}
+      <GptSection
+        icon={<MessageCircle size={20} />}
+        title="MiniTax 요약 설명"
+        content={state.summary}
+        status={
+          state.loading === "default"
+            ? "loading"
+            : state.error === "default"
+            ? "error"
+            : null
+        }
+        fallback={
+          state.loading === "default"
+            ? "GPT가 내용을 정리 중이에요..."
+            : state.error === "default"
+            ? "요약에 실패했습니다."
+            : undefined
+        }
+      />
 
       <div className={styles.buttonWrapper}>
         <button
@@ -181,36 +173,46 @@ export default function GptSummary({ result }: { result: TaxResult }) {
       </div>
 
       {/* 절세 전략 설명 영역 */}
-      {state.loading === "saving" ? (
-        <div className={styles.loading}>
-          <Loader2 className={styles.spinner} />
-          절세 전략을 정리 중이에요...
-        </div>
-      ) : state.error === "saving" ? (
-        <p className={styles.error}>절세 전략 요청에 실패했습니다.</p>
-      ) : (
-        <GptSection
-          icon={<Lightbulb size={20} />}
-          title="절세 전략"
-          content={state.strategy}
-        />
-      )}
+      <GptSection
+        icon={<Lightbulb size={20} />}
+        title="절세 전략"
+        content={state.strategy}
+        status={
+          state.loading === "saving"
+            ? "loading"
+            : state.error === "saving"
+            ? "error"
+            : null
+        }
+        fallback={
+          state.loading === "saving"
+            ? "절세 전략을 정리 중이에요..."
+            : state.error === "saving"
+            ? "절세 전략 요청에 실패했습니다."
+            : undefined
+        }
+      />
 
       {/* 신고 유의사항 설명 영역 */}
-      {state.loading === "warning" ? (
-        <div className={styles.loading}>
-          <Loader2 className={styles.spinner} />
-          신고 유의사항을 정리 중이에요...
-        </div>
-      ) : state.error === "warning" ? (
-        <p className={styles.error}>신고 유의사항 요청에 실패했습니다.</p>
-      ) : (
-        <GptSection
-          icon={<AlertTriangle size={20} />}
-          title="신고 시 유의사항"
-          content={state.warning}
-        />
-      )}
+      <GptSection
+        icon={<AlertTriangle size={20} />}
+        title="신고 시 유의사항"
+        content={state.warning}
+        status={
+          state.loading === "warning"
+            ? "loading"
+            : state.error === "warning"
+            ? "error"
+            : null
+        }
+        fallback={
+          state.loading === "warning"
+            ? "신고 유의사항을 정리 중이에요..."
+            : state.error === "warning"
+            ? "신고 유의사항 요청에 실패했습니다."
+            : undefined
+        }
+      />
     </section>
   );
 }
