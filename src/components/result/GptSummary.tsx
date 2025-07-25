@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useReducer } from "react";
 import styles from "./GptSummary.module.css";
 import {
   AlertTriangle,
@@ -21,14 +21,54 @@ import { getTaxRateLabel } from "@/lib/getTaxRateLabel";
 //   "실제 납부액은 건강보험료, 국민연금, 주민세 등 추가 항목에 따라 달라질 수 있습니다.",
 // ];
 
+type GptState = {
+  summary: string | null;
+  strategy: string | null;
+  warning: string | null;
+  loading: null | "default" | "saving" | "warning";
+  error: null | "default" | "saving" | "warning";
+};
+
+type Action =
+  | { type: "LOADING"; payload: GptState["loading"] }
+  | { type: "ERROR"; payload: GptState["error"] }
+  | { type: "SET_SUMMARY"; payload: string }
+  | { type: "SET_STRATEGY"; payload: string }
+  | { type: "SET_WARNING"; payload: string }
+  | { type: "RESET_ERROR" };
+
+function gptReducer(state: GptState, action: Action): GptState {
+  switch (action.type) {
+    case "LOADING":
+      return { ...state, loading: action.payload, error: null };
+    case "ERROR":
+      return { ...state, error: action.payload, loading: null };
+    case "SET_SUMMARY":
+      return { ...state, summary: action.payload, loading: null };
+    case "SET_STRATEGY":
+      return { ...state, strategy: action.payload, loading: null };
+    case "SET_WARNING":
+      return { ...state, warning: action.payload, loading: null };
+    case "RESET_ERROR":
+      return { ...state, error: null };
+    default:
+      return state;
+  }
+}
+
 export default function GptSummary({ result }: { result: TaxResult }) {
-  const [summary, setSummary] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [state, dispatch] = useReducer(gptReducer, {
+    summary: null,
+    strategy: null,
+    warning: null,
+    loading: "default",
+    error: null,
+  });
 
   const fetchSummary = useCallback(async () => {
     try {
-      setLoading(true);
+      dispatch({ type: "LOADING", payload: "default" });
+
       const input = `
         연소득: ${result.income.toLocaleString()}원
         필요경비: ${result.expense.toLocaleString()}원
@@ -42,21 +82,18 @@ export default function GptSummary({ result }: { result: TaxResult }) {
         총 납부세액: ${result.finalTax.toLocaleString()}원
       `;
       const res = await getGptSummary(input);
-      setSummary(res);
-      setError(null);
+      dispatch({ type: "SET_SUMMARY", payload: res });
     } catch (err) {
       console.error("요약 실패:", err);
-      setError("요약에 실패했습니다.");
-    } finally {
-      setLoading(false);
+      dispatch({ type: "ERROR", payload: "default" });
     }
   }, [result]);
 
   useEffect(() => {
-    if (!summary) {
+    if (!state.summary) {
       fetchSummary();
     }
-  }, [fetchSummary, summary]);
+  }, [fetchSummary, state.summary]);
 
   return (
     <section className={styles.container}>
@@ -74,9 +111,9 @@ export default function GptSummary({ result }: { result: TaxResult }) {
         <button
           className={styles.resetButton}
           onClick={fetchSummary}
-          disabled={loading}
+          disabled={state.loading === "default"}
         >
-          {loading ? (
+          {state.loading === "default" ? (
             <Loader2 size={14} className={styles.spinner} />
           ) : (
             <Loader2 size={14} />
@@ -93,17 +130,17 @@ export default function GptSummary({ result }: { result: TaxResult }) {
           <h3>MiniTax 요약 설명</h3>
         </div>
 
-        {loading ? (
+        {state.loading === "default" ? (
           <div className={styles.loading}>
             <Loader2 className={styles.spinner} />
             GPT가 내용을 정리 중이에요...
           </div>
-        ) : error ? (
-          <p className={styles.error}>{error}</p>
+        ) : state.error === "default" ? (
+          <p className={styles.error}>요약에 실패했습니다.</p>
         ) : (
           <div>
             <ul className={styles.list}>
-              {summary
+              {state.summary
                 ?.split("\n")
                 .filter((line) => line.trim() !== "")
                 .map((line, i) => (
