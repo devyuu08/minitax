@@ -81,7 +81,7 @@ export default function GptSummary({ result }: { result: TaxResult }) {
         실효세율: ${(result.effectiveTaxRate * 100).toFixed(2)}%
         총 납부세액: ${result.finalTax.toLocaleString()}원
       `;
-      const res = await getGptSummary(input);
+      const res = await getGptSummary("default", result);
       dispatch({ type: "SET_SUMMARY", payload: res });
     } catch (err) {
       console.error("요약 실패:", err);
