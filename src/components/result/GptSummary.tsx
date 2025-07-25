@@ -173,46 +173,54 @@ export default function GptSummary({ result }: { result: TaxResult }) {
       </div>
 
       {/* 절세 전략 설명 영역 */}
-      <GptSection
-        icon={<Lightbulb size={20} />}
-        title="절세 전략"
-        content={state.strategy}
-        status={
-          state.loading === "saving"
-            ? "loading"
-            : state.error === "saving"
-            ? "error"
-            : null
-        }
-        fallback={
-          state.loading === "saving"
-            ? "절세 전략을 정리 중이에요..."
-            : state.error === "saving"
-            ? "절세 전략 요청에 실패했습니다."
-            : undefined
-        }
-      />
+      {state.strategy ||
+      state.loading === "saving" ||
+      state.error === "saving" ? (
+        <GptSection
+          icon={<Lightbulb size={20} />}
+          title="절세 전략"
+          content={state.strategy}
+          status={
+            state.loading === "saving"
+              ? "loading"
+              : state.error === "saving"
+              ? "error"
+              : null
+          }
+          fallback={
+            state.loading === "saving"
+              ? "절세 전략을 정리 중이에요..."
+              : state.error === "saving"
+              ? "절세 전략 요청에 실패했습니다."
+              : undefined
+          }
+        />
+      ) : null}
 
       {/* 신고 유의사항 설명 영역 */}
-      <GptSection
-        icon={<AlertTriangle size={20} />}
-        title="신고 시 유의사항"
-        content={state.warning}
-        status={
-          state.loading === "warning"
-            ? "loading"
-            : state.error === "warning"
-            ? "error"
-            : null
-        }
-        fallback={
-          state.loading === "warning"
-            ? "신고 유의사항을 정리 중이에요..."
-            : state.error === "warning"
-            ? "신고 유의사항 요청에 실패했습니다."
-            : undefined
-        }
-      />
+      {state.warning ||
+      state.loading === "warning" ||
+      state.error === "warning" ? (
+        <GptSection
+          icon={<AlertTriangle size={20} />}
+          title="신고 시 유의사항"
+          content={state.warning}
+          status={
+            state.loading === "warning"
+              ? "loading"
+              : state.error === "warning"
+              ? "error"
+              : null
+          }
+          fallback={
+            state.loading === "warning"
+              ? "신고 유의사항을 정리 중이에요..."
+              : state.error === "warning"
+              ? "신고 유의사항 요청에 실패했습니다."
+              : undefined
+          }
+        />
+      ) : null}
     </section>
   );
 }
