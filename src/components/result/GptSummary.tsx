@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useReducer } from "react";
 import styles from "./GptSummary.module.css";
 import {
   AlertTriangle,
@@ -12,6 +12,7 @@ import {
 import { getGptSummary } from "@/lib/actions/gptSummary";
 import { TaxResult } from "@/types/tax";
 import { getTaxRateLabel } from "@/lib/getTaxRateLabel";
+import GptSection from "./GptSection";
 
 // const mockSummary = [
 //   "귀하의 <strong>연소득은 50,000,000원</strong>이고, <strong>필요경비는 10,000,000원</strong>으로 계산되었습니다.",
@@ -21,42 +22,97 @@ import { getTaxRateLabel } from "@/lib/getTaxRateLabel";
 //   "실제 납부액은 건강보험료, 국민연금, 주민세 등 추가 항목에 따라 달라질 수 있습니다.",
 // ];
 
+type GptState = {
+  summary: string | null;
+  strategy: string | null;
+  warning: string | null;
+  loading: null | "default" | "saving" | "warning";
+  error: null | "default" | "saving" | "warning";
+};
+
+type Action =
+  | { type: "LOADING"; payload: GptState["loading"] }
+  | { type: "ERROR"; payload: GptState["error"] }
+  | { type: "SET_SUMMARY"; payload: string }
+  | { type: "SET_STRATEGY"; payload: string }
+  | { type: "SET_WARNING"; payload: string }
+  | { type: "RESET_ERROR" }
+  | { type: "RESET_ALL" };
+
+function gptReducer(state: GptState, action: Action): GptState {
+  switch (action.type) {
+    case "LOADING":
+      return { ...state, loading: action.payload, error: null };
+    case "ERROR":
+      return { ...state, error: action.payload, loading: null };
+    case "SET_SUMMARY":
+      return { ...state, summary: action.payload, loading: null };
+    case "SET_STRATEGY":
+      return { ...state, strategy: action.payload, loading: null };
+    case "SET_WARNING":
+      return { ...state, warning: action.payload, loading: null };
+    case "RESET_ERROR":
+      return { ...state, error: null };
+    case "RESET_ALL":
+      return {
+        summary: null,
+        strategy: null,
+        warning: null,
+        loading: "default",
+        error: null,
+      };
+
+    default:
+      return state;
+  }
+}
+
 export default function GptSummary({ result }: { result: TaxResult }) {
-  const [summary, setSummary] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [state, dispatch] = useReducer(gptReducer, {
+    summary: null,
+    strategy: null,
+    warning: null,
+    loading: "default",
+    error: null,
+  });
 
   const fetchSummary = useCallback(async () => {
     try {
-      setLoading(true);
-      const input = `
-        연소득: ${result.income.toLocaleString()}원
-        필요경비: ${result.expense.toLocaleString()}원
-        순소득: ${(result.income - result.expense).toLocaleString()}원
-        과세표준: ${result.taxableIncome.toLocaleString()}원
-        적용 세율: ${(result.appliedRate * 100).toFixed(1)}%
-        누진공제: ${result.deduction.toLocaleString()}원
-        산출세액: ${result.taxAmount.toLocaleString()}원
-        지방소득세: ${result.localTax.toLocaleString()}원
-        실효세율: ${(result.effectiveTaxRate * 100).toFixed(2)}%
-        총 납부세액: ${result.finalTax.toLocaleString()}원
-      `;
-      const res = await getGptSummary(input);
-      setSummary(res);
-      setError(null);
+      dispatch({ type: "RESET_ALL" });
+      dispatch({ type: "LOADING", payload: "default" });
+      const res = await getGptSummary("default", result);
+      dispatch({ type: "SET_SUMMARY", payload: res });
     } catch (err) {
       console.error("요약 실패:", err);
-      setError("요약에 실패했습니다.");
-    } finally {
-      setLoading(false);
+      dispatch({ type: "ERROR", payload: "default" });
     }
   }, [result]);
 
+  const handleExplainClick = useCallback(
+    async (type: "saving" | "warning") => {
+      if (state.loading) return;
+      dispatch({ type: "LOADING", payload: type });
+
+      try {
+        const res = await getGptSummary(type, result);
+        if (type === "saving") {
+          dispatch({ type: "SET_STRATEGY", payload: res });
+        } else {
+          dispatch({ type: "SET_WARNING", payload: res });
+        }
+      } catch (err) {
+        console.error(`${type} 요약 실패:`, err);
+        dispatch({ type: "ERROR", payload: type });
+      }
+    },
+    [result, state.loading]
+  );
+
   useEffect(() => {
-    if (!summary) {
+    if (!state.summary) {
       fetchSummary();
     }
-  }, [fetchSummary, summary]);
+  }, [fetchSummary, state.summary]);
 
   return (
     <section className={styles.container}>
@@ -74,9 +130,9 @@ export default function GptSummary({ result }: { result: TaxResult }) {
         <button
           className={styles.resetButton}
           onClick={fetchSummary}
-          disabled={loading}
+          disabled={state.loading === "default"}
         >
-          {loading ? (
+          {state.loading === "default" ? (
             <Loader2 size={14} className={styles.spinner} />
           ) : (
             <Loader2 size={14} />
@@ -87,43 +143,95 @@ export default function GptSummary({ result }: { result: TaxResult }) {
 
       <div className={styles.label}>{getTaxRateLabel(result.appliedRate)}</div>
 
-      <div className={styles.gpt_wrapper}>
-        <div className={styles.title}>
-          <MessageCircle size={20} />
-          <h3>MiniTax 요약 설명</h3>
-        </div>
-
-        {loading ? (
-          <div className={styles.loading}>
-            <Loader2 className={styles.spinner} />
-            GPT가 내용을 정리 중이에요...
-          </div>
-        ) : error ? (
-          <p className={styles.error}>{error}</p>
-        ) : (
-          <div>
-            <ul className={styles.list}>
-              {summary
-                ?.split("\n")
-                .filter((line) => line.trim() !== "")
-                .map((line, i) => (
-                  <li key={i} dangerouslySetInnerHTML={{ __html: line }} />
-                ))}
-            </ul>
-          </div>
-        )}
-      </div>
+      {/* 기본 요약 영역 */}
+      <GptSection
+        icon={<MessageCircle size={20} />}
+        title="MiniTax 요약 설명"
+        content={state.summary}
+        status={
+          state.loading === "default"
+            ? "loading"
+            : state.error === "default"
+            ? "error"
+            : null
+        }
+        fallback={
+          state.loading === "default"
+            ? "GPT가 내용을 정리 중이에요..."
+            : state.error === "default"
+            ? "요약에 실패했습니다."
+            : undefined
+        }
+      />
 
       <div className={styles.buttonWrapper}>
-        <button className={`${styles.labelButton} ${styles.strategy}`}>
+        <button
+          className={`${styles.labelButton} ${styles.strategy}`}
+          onClick={() => handleExplainClick("saving")}
+          disabled={state.loading === "saving"}
+        >
           <Lightbulb size={16} style={{ marginRight: 6 }} />
           절세 전략
         </button>
-        <button className={`${styles.labelButton} ${styles.warning}`}>
+        <button
+          className={`${styles.labelButton} ${styles.warning}`}
+          onClick={() => handleExplainClick("warning")}
+          disabled={state.loading === "warning"}
+        >
           <AlertTriangle size={16} style={{ marginRight: 6 }} />
           신고 유의사항
         </button>
       </div>
+
+      {/* 절세 전략 설명 영역 */}
+      {state.strategy ||
+      state.loading === "saving" ||
+      state.error === "saving" ? (
+        <GptSection
+          icon={<Lightbulb size={20} />}
+          title="절세 전략"
+          content={state.strategy}
+          status={
+            state.loading === "saving"
+              ? "loading"
+              : state.error === "saving"
+              ? "error"
+              : null
+          }
+          fallback={
+            state.loading === "saving"
+              ? "절세 전략을 정리 중이에요..."
+              : state.error === "saving"
+              ? "절세 전략 요청에 실패했습니다."
+              : undefined
+          }
+        />
+      ) : null}
+
+      {/* 신고 유의사항 설명 영역 */}
+      {state.warning ||
+      state.loading === "warning" ||
+      state.error === "warning" ? (
+        <GptSection
+          icon={<AlertTriangle size={20} />}
+          title="신고 시 유의사항"
+          content={state.warning}
+          status={
+            state.loading === "warning"
+              ? "loading"
+              : state.error === "warning"
+              ? "error"
+              : null
+          }
+          fallback={
+            state.loading === "warning"
+              ? "신고 유의사항을 정리 중이에요..."
+              : state.error === "warning"
+              ? "신고 유의사항 요청에 실패했습니다."
+              : undefined
+          }
+        />
+      ) : null}
     </section>
   );
 }
