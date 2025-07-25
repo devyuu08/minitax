@@ -12,6 +12,7 @@ import {
 import { getGptSummary } from "@/lib/actions/gptSummary";
 import { TaxResult } from "@/types/tax";
 import { getTaxRateLabel } from "@/lib/getTaxRateLabel";
+import GptSection from "./GptSection";
 
 // const mockSummary = [
 //   "귀하의 <strong>연소득은 50,000,000원</strong>이고, <strong>필요경비는 10,000,000원</strong>으로 계산되었습니다.",
@@ -89,6 +90,26 @@ export default function GptSummary({ result }: { result: TaxResult }) {
     }
   }, [result]);
 
+  const handleExplainClick = useCallback(
+    async (type: "saving" | "warning") => {
+      if (state.loading) return;
+      dispatch({ type: "LOADING", payload: type });
+
+      try {
+        const res = await getGptSummary(type, result);
+        if (type === "saving") {
+          dispatch({ type: "SET_STRATEGY", payload: res });
+        } else {
+          dispatch({ type: "SET_WARNING", payload: res });
+        }
+      } catch (err) {
+        console.error(`${type} 요약 실패:`, err);
+        dispatch({ type: "ERROR", payload: type });
+      }
+    },
+    [result, state.loading]
+  );
+
   useEffect(() => {
     if (!state.summary) {
       fetchSummary();
@@ -124,43 +145,72 @@ export default function GptSummary({ result }: { result: TaxResult }) {
 
       <div className={styles.label}>{getTaxRateLabel(result.appliedRate)}</div>
 
-      <div className={styles.gpt_wrapper}>
-        <div className={styles.title}>
-          <MessageCircle size={20} />
-          <h3>MiniTax 요약 설명</h3>
+      {/* 기본 요약 영역 */}
+      {state.loading === "default" ? (
+        <div className={styles.loading}>
+          <Loader2 className={styles.spinner} />
+          GPT가 내용을 정리 중이에요...
         </div>
-
-        {state.loading === "default" ? (
-          <div className={styles.loading}>
-            <Loader2 className={styles.spinner} />
-            GPT가 내용을 정리 중이에요...
-          </div>
-        ) : state.error === "default" ? (
-          <p className={styles.error}>요약에 실패했습니다.</p>
-        ) : (
-          <div>
-            <ul className={styles.list}>
-              {state.summary
-                ?.split("\n")
-                .filter((line) => line.trim() !== "")
-                .map((line, i) => (
-                  <li key={i} dangerouslySetInnerHTML={{ __html: line }} />
-                ))}
-            </ul>
-          </div>
-        )}
-      </div>
+      ) : state.error === "default" ? (
+        <p className={styles.error}>요약에 실패했습니다.</p>
+      ) : (
+        <GptSection
+          icon={<MessageCircle size={20} />}
+          title="MiniTax 요약 설명"
+          content={state.summary}
+        />
+      )}
 
       <div className={styles.buttonWrapper}>
-        <button className={`${styles.labelButton} ${styles.strategy}`}>
+        <button
+          className={`${styles.labelButton} ${styles.strategy}`}
+          onClick={() => handleExplainClick("saving")}
+          disabled={state.loading === "saving"}
+        >
           <Lightbulb size={16} style={{ marginRight: 6 }} />
           절세 전략
         </button>
-        <button className={`${styles.labelButton} ${styles.warning}`}>
+        <button
+          className={`${styles.labelButton} ${styles.warning}`}
+          onClick={() => handleExplainClick("warning")}
+          disabled={state.loading === "warning"}
+        >
           <AlertTriangle size={16} style={{ marginRight: 6 }} />
           신고 유의사항
         </button>
       </div>
+
+      {/* 절세 전략 설명 영역 */}
+      {state.loading === "saving" ? (
+        <div className={styles.loading}>
+          <Loader2 className={styles.spinner} />
+          절세 전략을 정리 중이에요...
+        </div>
+      ) : state.error === "saving" ? (
+        <p className={styles.error}>절세 전략 요청에 실패했습니다.</p>
+      ) : (
+        <GptSection
+          icon={<Lightbulb size={20} />}
+          title="절세 전략"
+          content={state.strategy}
+        />
+      )}
+
+      {/* 신고 유의사항 설명 영역 */}
+      {state.loading === "warning" ? (
+        <div className={styles.loading}>
+          <Loader2 className={styles.spinner} />
+          신고 유의사항을 정리 중이에요...
+        </div>
+      ) : state.error === "warning" ? (
+        <p className={styles.error}>신고 유의사항 요청에 실패했습니다.</p>
+      ) : (
+        <GptSection
+          icon={<AlertTriangle size={20} />}
+          title="신고 시 유의사항"
+          content={state.warning}
+        />
+      )}
     </section>
   );
 }
