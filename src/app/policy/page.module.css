@@ -11,7 +11,7 @@
 
 .container h2 {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -19,7 +19,7 @@
 .container section {
   padding: 0 1rem;
   width: 100%;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 .iconBox {
@@ -36,6 +36,26 @@
   height: 1.5rem;
 }
 
+.card.notice .iconBox {
+  background-color: #fef3c7;
+}
+
+.card.ai .iconBox {
+  background-color: #dbeafe;
+}
+
+.card.accuracy .iconBox {
+  background-color: #dcfce7;
+}
+
+.card.privacy .iconBox {
+  background-color: #f3e8ff;
+}
+
+.card.guide .iconBox {
+  background-color: #f3f4f6;
+}
+
 .title h1 {
   font-size: 3rem;
   font-weight: 600;
@@ -50,6 +70,99 @@
   background: linear-gradient(to right, #f3c66c, #f88512);
   margin: 0 auto 2rem;
   border-radius: 9999px;
+}
+
+.card {
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.card h2 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.3rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+.notice {
+  background-color: #fefce8;
+  border: 1px solid #fde68a;
+}
+
+.ai {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+.accuracy {
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+}
+
+.privacy {
+  background-color: #f5f3ff;
+  border: 1px solid #ddd6fe;
+}
+
+.guide {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: start;
+}
+
+.textBox > div:last-child {
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.accuracy .textBox > div:last-child {
+  background: #cbf6da;
+  color: #166534;
+}
+.privacy .textBox > div:last-child {
+  background: #f3e8ff;
+  color: #6b21a8;
+}
+.ai .textBox > div:last-child {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.numberList {
+  list-style: none;
+  padding: 0;
+}
+
+.numberList li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.numberList span {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-right: 0.5rem;
+  color: #4f46e5;
+  flex-shrink: 0;
 }
 
 /* 서비스 이용 동의 섹션 */

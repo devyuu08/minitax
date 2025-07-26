@@ -21,25 +21,28 @@ export default function Page() {
       </section>
 
       <section>
-        <div className={styles.cardGrid}>
-          <div className={`${styles.card} ${styles.freelancer}`}>
-            <div className={`${styles.iconBox}`}>
-              <AlertTriangle color="#4f46e5" />
-            </div>
+        <div className={`${styles.card} ${styles.notice}`}>
+          <div className={`${styles.iconBox}`}>
+            <AlertTriangle color="#D97706" />
+          </div>
+          <div className={styles.textBox}>
             <h2>중요 안내사항</h2>
             <p>
               MiniTax 서비스를 이용하기 전에 반드시 아래 내용을 확인해주세요.
             </p>
           </div>
+        </div>
 
-          <div className={`${styles.card} ${styles.business}`}>
-            <div className={`${styles.iconBox}`}>
-              <Bot color="#4f46e5" />
-            </div>
+        <div className={`${styles.card} ${styles.ai}`}>
+          <div className={`${styles.iconBox}`}>
+            <Bot color="#2563EB" />
+          </div>
+          <div className={styles.textBox}>
             <h2>AI 설명에 대한 고지사항</h2>
             <p>
               MiniTax에서 제공하는 GPT 기반 AI 설명은{" "}
-              <strong>참고용 정보</strong>로만 활용해주시기 바랍니다.
+              <strong>참고용 정보</strong>
+              로만 활용해주시기 바랍니다.
             </p>
             <p>
               AI가 제공하는 세무 관련 설명과 조언은{" "}
@@ -51,15 +54,17 @@ export default function Page() {
               <strong>세무 전문가 또는 세무사</strong>와 상담하시기 바랍니다.
             </p>
             <div>
-              <AlertCircle color="#4f46e5" /> AI 설명은 일반적인 세법 정보를
+              <AlertCircle color="#1E40AF" /> AI 설명은 일반적인 세법 정보를
               바탕으로 생성되며, 최신 세법 개정사항이 반영되지 않을 수 있습니다.
             </div>
           </div>
+        </div>
 
-          <div className={`${styles.card} ${styles.beginner}`}>
-            <div className={`${styles.iconBox}`}>
-              <Calculator color="#8b5cf6" />
-            </div>
+        <div className={`${styles.card} ${styles.accuracy}`}>
+          <div className={`${styles.iconBox}`}>
+            <Calculator color="#16A34A" />
+          </div>
+          <div className={styles.textBox}>
             <h2>계산 결과의 정확성</h2>
             <p>
               MiniTax의 세금 계산 결과는 <strong>예상 금액</strong>이며, 실제
@@ -75,15 +80,17 @@ export default function Page() {
               계산 결과와 차이가 날 수 있습니다.
             </p>
             <div>
-              <ShieldCheck color="#059669" /> AI 설명은 일반적인 세법 정보를
+              <ShieldCheck color="#166534" /> AI 설명은 일반적인 세법 정보를
               바탕으로 생성되며, 최신 세법 개정사항이 반영되지 않을 수 있습니다.
             </div>
           </div>
+        </div>
 
-          <div className={`${styles.card} ${styles.taxSaver}`}>
-            <div className={`${styles.iconBox}`}>
-              <ShieldUser color="#f97316" />
-            </div>
+        <div className={`${styles.card} ${styles.privacy}`}>
+          <div className={`${styles.iconBox}`}>
+            <ShieldUser color="#9333EA" />
+          </div>
+          <div className={styles.textBox}>
             <h2>개인정보 보호</h2>
             <p>
               MiniTax에서 입력하신{" "}
@@ -99,38 +106,36 @@ export default function Page() {
               <strong>보관되지 않으므로,</strong> 안심하고 이용하실 수 있습니다.
             </p>
             <div>
-              <LockKeyholeIcon color="#4f46e5" /> 귀하의 개인정보와 소득정보는
+              <LockKeyholeIcon color="#6B21A8" /> 귀하의 개인정보와 소득정보는
               철저히 보호되며, 외부로 유출되지 않습니다.
             </div>
           </div>
+        </div>
 
-          <div className={`${styles.card} ${styles.taxSaver}`}>
-            <div className={`${styles.iconBox}`}>
-              <Lightbulb color="#f97316" />
-            </div>
+        <div className={`${styles.card} ${styles.guide}`}>
+          <div className={`${styles.iconBox}`}>
+            <Lightbulb color="#4B5563" />
+          </div>
+          <div className={styles.textBox}>
             <h2>권장 이용 방법</h2>
-            <ol>
+            <ul className={styles.numberList}>
               <li>
-                세금 신고 전 <strong>예상 세액을 미리 확인</strong>하는 용도로
-                활용하세요.
+                <span>1.</span>세금 신고 전 &nbsp;
+                <strong>예상 세액을 미리 확인</strong>하는 용도로 활용하세요.
               </li>
               <li>
-                계산 결과를 바탕으로 <strong>신고 준비와 자금 계획</strong>을
-                세워보세요.
+                <span>2.</span>계산 결과를 바탕으로 &nbsp;
+                <strong>신고 준비와 자금 계획</strong>을 세워보세요.
               </li>
               <li>
-                복잡한 경우나 정확한 신고가 필요할 때는{" "}
+                <span>3.</span>복잡한 경우나 정확한 신고가 필요할 때는 &nbsp;
                 <strong>세무 전문가와 상담</strong>하세요.
               </li>
               <li>
-                AI 설명을 통해 <strong>세법에 대한 기본 이해</strong>를
-                높여보세요.
+                <span>4.</span>AI 설명을 통해 &nbsp;
+                <strong>세법에 대한 기본 이해</strong>를 높여보세요.
               </li>
-            </ol>
-            <div>
-              <LockKeyholeIcon color="#4f46e5" /> 귀하의 개인정보와 소득정보는
-              철저히 보호되며, 외부로 유출되지 않습니다.
-            </div>
+            </ul>
           </div>
         </div>
       </section>
