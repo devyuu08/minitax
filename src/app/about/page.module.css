@@ -1,0 +1,218 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffff;
+  border-radius: 1rem;
+}
+
+.container h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.container section {
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.title h1 {
+  font-size: 5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 1rem;
+  padding: 1rem 0;
+}
+
+.title div {
+  width: 5.8rem;
+  height: 4px;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  margin: 0 auto 2rem;
+  border-radius: 9999px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  margin: 3rem 0;
+  border-bottom: 1px dashed #d1d5db;
+  opacity: 0.6;
+}
+
+.targetUsers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: #f9fafb;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e5e7eb;
+}
+
+.card h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+/* 배경색/아이콘 색상 */
+.freelancer {
+  background-color: #eef2ff;
+  border-color: #c7d2fe;
+}
+
+.business {
+  background-color: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+.beginner {
+  background-color: #f5f3ff;
+  border-color: #d8b4fe;
+}
+
+.taxSaver {
+  background-color: #fff7ed;
+  border-color: #fdba74;
+}
+
+/* 아이콘 박스 */
+.iconBox {
+  width: 56px;
+  height: 56px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconBox svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.card.freelancer .iconBox {
+  background-color: #e0e7ff;
+}
+
+.card.business .iconBox {
+  background-color: #d1fae5;
+}
+
+.card.beginner .iconBox {
+  background-color: #ede9fe;
+}
+
+.card.taxSaver .iconBox {
+  background-color: #f9ecdd;
+}
+
+/* 주요 제공 기능 섹션 */
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: start;
+}
+.featureItem h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.featureItem p {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.blue {
+  background-color: #e0e7ff;
+}
+
+/* 우리의 약속 섹션 */
+.promiseSection {
+  background: linear-gradient(to right, #f5f3ff, #f0f9ff);
+  border-radius: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(203, 213, 225, 0.7);
+}
+
+.promiseSection h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.promiseSection p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 2rem;
+}
+
+.promiseContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.policy_Btn {
+  background: white;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  color: #1f2937;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+  margin-bottom: 3rem;
+}
+
+.policy_Btn:hover {
+  background: #f9fafb;
+  transform: translateY(-1px);
+}
+
+.purple {
+  background: linear-gradient(90deg, #93c5fd, #c4b5fd, #a5b4fc);
+}
