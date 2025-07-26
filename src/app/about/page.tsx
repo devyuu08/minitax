@@ -38,13 +38,13 @@ export default function Page() {
 
       <div className={styles.divider} />
 
-      <section className={styles.targetUsersList}>
+      <section>
         <h2>이런 분들을 위해 만들었어요</h2>
 
         <div className={styles.cardGrid}>
           <div className={`${styles.card} ${styles.freelancer}`}>
-            <div className={`${styles.iconBox} ${styles.blue}`}>
-              <Briefcase />
+            <div className={`${styles.iconBox}`}>
+              <Briefcase color="#4f46e5" />
             </div>
             <h3>프리랜서</h3>
             <p>
@@ -54,8 +54,8 @@ export default function Page() {
           </div>
 
           <div className={`${styles.card} ${styles.business}`}>
-            <div className={`${styles.iconBox} ${styles.blue}`}>
-              <Store />
+            <div className={`${styles.iconBox}`}>
+              <Store color="#059669" />
             </div>
             <h3>개인사업자</h3>
             <p>
@@ -65,16 +65,16 @@ export default function Page() {
           </div>
 
           <div className={`${styles.card} ${styles.beginner}`}>
-            <div className={`${styles.iconBox} ${styles.blue}`}>
-              <UserPlus />
+            <div className={`${styles.iconBox}`}>
+              <UserPlus color="#8b5cf6" />
             </div>
             <h3>초보 사업자</h3>
             <p>처음 사업을 시작하여 세금 신고 과정이 낯설고 부담스러운 분들</p>
           </div>
 
           <div className={`${styles.card} ${styles.taxSaver}`}>
-            <div className={`${styles.iconBox} ${styles.blue}`}>
-              <Lightbulb />
+            <div className={`${styles.iconBox}`}>
+              <Lightbulb color="#f97316" />
             </div>
             <h3>절세 관심자</h3>
             <p>
@@ -87,51 +87,60 @@ export default function Page() {
 
       <div className={styles.divider} />
 
-      <section className={styles.featuresSection}>
+      <section>
         <h2>주요 제공 기능</h2>
         <div className={styles.featureItem}>
           <div className={`${styles.iconBox} ${styles.blue}`}>
-            <Calculator color="#6366f1" />
+            <Calculator color="#4f46e5" />
           </div>
-          <h3>간편한 세금 계산</h3>
-          <p>
-            연소득과 필요경비만 입력하면 종합소득세, 지방소득세를 자동으로
-            계산합니다.
-          </p>
+          <div className={styles.textBox}>
+            <h3>간편한 세금 계산</h3>
+            <p>
+              연소득과 필요경비만 입력하면 종합소득세, 지방소득세를 자동으로
+              계산합니다.
+            </p>
+          </div>
         </div>
         <div className={styles.featureItem}>
           <div className={`${styles.iconBox} ${styles.blue}`}>
-            <Bot color="#6366f1" />
+            <Bot color="#059669" />
           </div>
-          <h3>AI 기반 친절한 설명</h3>
-          <p>
-            이해하기 어려운 세법 계산 과정을 AI가 쉬운 말로 설명해드립니다. 왜
-            이런 세금이 나왔는지를 쉽게 확인할 수 있습니다.
-          </p>
+          <div className={styles.textBox}>
+            <h3>AI 기반 친절한 설명</h3>
+            <p>
+              이해하기 어려운 세법 계산 과정을 AI가 쉬운 말로 설명해드립니다. 왜
+              이런 세금이 나왔는지를 쉽게 확인할 수 있습니다.
+            </p>
+          </div>
         </div>
         <div className={styles.featureItem}>
           <div className={`${styles.iconBox} ${styles.blue}`}>
-            <BadgePercent color="#6366f1" />
+            <BadgePercent color="#8b5cf6" />
           </div>
-          <h3> 맞춤형 절세 가이드</h3>
-          <p>
-            개인의 소득에 맞는 절세 전략과 공제 혜택을 제안합니다. 놓치기 쉬운
-            공제 항목들과 신고 시 주의사항도 함께 안내합니다.
-          </p>
+          <div className={styles.textBox}>
+            <h3> 맞춤형 절세 가이드</h3>
+            <p>
+              개인의 소득에 맞는 절세 전략과 공제 혜택을 제안합니다. 놓치기 쉬운
+              공제 항목들과 신고 시 주의사항도 함께 안내합니다.
+            </p>
+          </div>
         </div>
         <div className={styles.featureItem}>
           <div className={`${styles.iconBox} ${styles.blue}`}>
-            <ShieldCheck color="#6366f1" />
+            <ShieldCheck color="#f53325ff" />
           </div>
-          <h3>신뢰할 수 있는 계산</h3>
-          <p>
-            국세청 공식 세율표와 공제 기준을 바탕으로 정확한 계산을 제공합니다.
-            실제 신고할 때와 동일한 기준으로 세금을 미리 예측할 수 있습니다.
-          </p>
+          <div className={styles.textBox}>
+            <h3>신뢰할 수 있는 계산</h3>
+            <p>
+              국세청 공식 세율표와 공제 기준을 바탕으로 정확한 계산을
+              제공합니다. 실제 신고할 때와 동일한 기준으로 세금을 미리 예측할 수
+              있습니다.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className={styles.missionSection}>
+      <section>
         <div>
           <div className={`${styles.iconBox} ${styles.blue}`}>
             <Heart color="#f4f4f9ff" />

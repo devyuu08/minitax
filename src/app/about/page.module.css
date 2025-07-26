@@ -118,28 +118,47 @@
 .card.freelancer .iconBox {
   background-color: #e0e7ff;
 }
-.card.freelancer .iconBox svg {
-  color: #4f46e5;
-}
 
 .card.business .iconBox {
   background-color: #d1fae5;
 }
-.card.business .iconBox svg {
-  color: #059669;
-}
 
 .card.beginner .iconBox {
   background-color: #ede9fe;
-}
-.card.beginner .iconBox svg {
-  color: #8b5cf6;
 }
 
 .card.taxSaver .iconBox {
   background-color: #f9ecdd;
 }
 
-.card.taxSaver .iconBox svg {
-  color: #f97316;
+/* 주요 제공 기능 섹션 */
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: start;
+}
+.featureItem h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.featureItem p {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.blue {
+  background-color: #e0e7ff;
 }
