@@ -140,9 +140,11 @@ export default function Page() {
         </div>
       </section>
 
-      <section>
-        <div>
-          <div className={`${styles.iconBox} ${styles.blue}`}>
+      <div className={styles.divider} />
+
+      <section className={styles.promiseSection}>
+        <div className={styles.promiseContent}>
+          <div className={`${styles.iconBox} ${styles.purple}`}>
             <Heart color="#f4f4f9ff" />
           </div>
           <h2>우리의 약속</h2>

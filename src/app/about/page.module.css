@@ -7,7 +7,6 @@
   padding: 2rem;
   background-color: #ffff;
   border-radius: 1rem;
-  border: 1px solid red;
 }
 
 .container h2 {
@@ -161,4 +160,59 @@
 
 .blue {
   background-color: #e0e7ff;
+}
+
+/* 우리의 약속 섹션 */
+.promiseSection {
+  background: linear-gradient(to right, #f5f3ff, #f0f9ff);
+  border-radius: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(203, 213, 225, 0.7);
+}
+
+.promiseSection h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.promiseSection p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 2rem;
+}
+
+.promiseContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.policy_Btn {
+  background: white;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  color: #1f2937;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+  margin-bottom: 3rem;
+}
+
+.policy_Btn:hover {
+  background: #f9fafb;
+  transform: translateY(-1px);
+}
+
+.purple {
+  background: linear-gradient(90deg, #93c5fd, #c4b5fd, #a5b4fc);
 }
