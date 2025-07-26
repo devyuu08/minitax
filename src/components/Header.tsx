@@ -13,12 +13,16 @@ const gradientFlow = keyframes`
 `;
 
 const HeaderWrapper = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
   display: flex;
   align-items: center;
   height: 60px;
   padding: 0 2rem;
-  background-color: #fff;
-  border-bottom: 1px solid #eaeaea;
+  background-color: transparent;
 `;
 
 const StyledLink = styled.a`
