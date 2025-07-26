@@ -2,8 +2,7 @@
   max-width: 1000px;
   min-height: 100vh;
   margin: 0 auto;
-  border: 1px solid red;
-  padding: 0px 15px;
+  padding: 60px 15px 0;
 }
 
 .container > main {
