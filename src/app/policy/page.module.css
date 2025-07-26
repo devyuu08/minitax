@@ -1,0 +1,108 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffff;
+  border-radius: 1rem;
+}
+
+.container h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.container section {
+  padding: 0 1rem;
+  width: 100%;
+  border: 1px solid blue;
+}
+
+.iconBox {
+  width: 56px;
+  height: 56px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconBox svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.title h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 1rem;
+  padding: 1rem 0;
+}
+
+.title div {
+  width: 5.8rem;
+  height: 4px;
+  background: linear-gradient(to right, #f3c66c, #f88512);
+  margin: 0 auto 2rem;
+  border-radius: 9999px;
+}
+
+/* 서비스 이용 동의 섹션 */
+.agreementSection {
+  background: linear-gradient(to right, #f5f3ff, #f0f9ff);
+  border-radius: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(203, 213, 225, 0.7);
+}
+
+.agreementSection h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.agreementSection p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 2rem;
+}
+
+.agreementContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.about_Btn {
+  background: white;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  color: #1f2937;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+  margin-bottom: 3rem;
+}
+
+.about_Btn:hover {
+  background: #f9fafb;
+  transform: translateY(-1px);
+}
+
+.purple {
+  background: linear-gradient(90deg, #93c5fd, #c4b5fd, #a5b4fc);
+}
