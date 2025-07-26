@@ -1,0 +1,221 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffff;
+  border-radius: 1rem;
+}
+
+.container h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.container section {
+  padding: 0 1rem;
+  width: 100%;
+  /* border: 1px solid blue; */
+}
+
+.iconBox {
+  width: 56px;
+  height: 56px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconBox svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.card.notice .iconBox {
+  background-color: #fef3c7;
+}
+
+.card.ai .iconBox {
+  background-color: #dbeafe;
+}
+
+.card.accuracy .iconBox {
+  background-color: #dcfce7;
+}
+
+.card.privacy .iconBox {
+  background-color: #f3e8ff;
+}
+
+.card.guide .iconBox {
+  background-color: #f3f4f6;
+}
+
+.title h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 1rem;
+  padding: 1rem 0;
+}
+
+.title div {
+  width: 5.8rem;
+  height: 4px;
+  background: linear-gradient(to right, #f3c66c, #f88512);
+  margin: 0 auto 2rem;
+  border-radius: 9999px;
+}
+
+.card {
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.card h2 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.3rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+.notice {
+  background-color: #fefce8;
+  border: 1px solid #fde68a;
+}
+
+.ai {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+.accuracy {
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+}
+
+.privacy {
+  background-color: #f5f3ff;
+  border: 1px solid #ddd6fe;
+}
+
+.guide {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: start;
+}
+
+.textBox > div:last-child {
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.accuracy .textBox > div:last-child {
+  background: #cbf6da;
+  color: #166534;
+}
+.privacy .textBox > div:last-child {
+  background: #f3e8ff;
+  color: #6b21a8;
+}
+.ai .textBox > div:last-child {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.numberList {
+  list-style: none;
+  padding: 0;
+}
+
+.numberList li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.numberList span {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-right: 0.5rem;
+  color: #4f46e5;
+  flex-shrink: 0;
+}
+
+/* 서비스 이용 동의 섹션 */
+.agreementSection {
+  background: linear-gradient(to right, #f5f3ff, #f0f9ff);
+  border-radius: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(203, 213, 225, 0.7);
+}
+
+.agreementSection h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.agreementSection p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 2rem;
+}
+
+.agreementContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.about_Btn {
+  background: white;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  color: #1f2937;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+  margin-bottom: 3rem;
+}
+
+.about_Btn:hover {
+  background: #f9fafb;
+  transform: translateY(-1px);
+}
+
+.purple {
+  background: linear-gradient(90deg, #93c5fd, #c4b5fd, #a5b4fc);
+}
