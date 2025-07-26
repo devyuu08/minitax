@@ -25,7 +25,7 @@ const HeaderWrapper = styled.header`
   background-color: transparent;
 `;
 
-const StyledLink = styled.a`
+const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
@@ -51,11 +51,9 @@ const AnimatedText = styled.span`
 export default function Header() {
   return (
     <HeaderWrapper>
-      <Link href="/" passHref>
-        <StyledLink>
-          <AnimatedText>MiniTax</AnimatedText>
-        </StyledLink>
-      </Link>
+      <StyledLink href="/">
+        <AnimatedText>MiniTax</AnimatedText>
+      </StyledLink>
     </HeaderWrapper>
   );
 }
