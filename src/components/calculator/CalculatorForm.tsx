@@ -1,6 +1,6 @@
 "use client";
 
-import { Lock, ShieldCheck } from "lucide-react";
+import { Lock, ScanLine, ShieldCheck } from "lucide-react";
 import styles from "./CalculatorForm.module.css";
 import { useEffect, useState } from "react";
 import { useTaxContext } from "@/context/TaxContext";
@@ -51,7 +51,7 @@ export default function CalculatorForm() {
         {/* 상단 제목 영역 */}
         <div className={styles.formHeader}>
           <div className={styles.iconWrapper}>
-            {/* 계산기 이미지 아이콘 넣기 */}
+            <ScanLine size={28} color="#fff" />
           </div>
           <h2 className={styles.formTitle}>소득 정보 입력</h2>
           <p className={styles.formSubtitle}>

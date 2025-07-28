@@ -193,3 +193,59 @@
   padding: 0.2rem;
   border-radius: 50%;
 }
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    max-width: 440px;
+    padding: 1.5rem 1rem;
+    border-radius: 1rem;
+  }
+
+  .formTitle {
+    font-size: 1.15rem;
+    text-align: center;
+  }
+
+  .formSubtitle {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .field label {
+    font-size: 0.9rem;
+  }
+
+  .inputWrapper input {
+    font-size: 1.25rem;
+    padding: 0.85rem 2.2rem 0.85rem 1rem;
+  }
+
+  .inputSuffix {
+    font-size: 0.9rem;
+  }
+
+  .submit {
+    padding: 0.85rem;
+    font-size: 0.95rem;
+    border-radius: 0.65rem;
+  }
+
+  .noticeBox {
+    padding: 1.25rem 1rem;
+  }
+
+  .noticeBox p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .noticeBox h3 {
+    font-size: 1.05rem;
+  }
+
+  .noticeList {
+    font-size: 0.9rem;
+    padding-left: 1.25rem;
+  }
+}
