@@ -16,8 +16,8 @@ export default function CalculatorForm() {
   const router = useRouter();
 
   useEffect(() => {
-    const parsedIncome = parseInt(income, 10);
-    const parsedExpense = parseInt(expense, 10);
+    const parsedIncome = parseInt(income.replace(/,/g, ""), 10);
+    const parsedExpense = parseInt(expense.replace(/,/g, ""), 10);
 
     if (
       !isNaN(parsedIncome) &&
@@ -31,11 +31,16 @@ export default function CalculatorForm() {
     }
   }, [income, expense]);
 
+  const formatNumber = (value: string) => {
+    const number = value.replace(/[^0-9]/g, "");
+    return number ? Number(number).toLocaleString() : "";
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const incomeValue = parseInt(income, 10);
-    const expenseValue = parseInt(expense, 10);
+    const incomeValue = parseInt(income.replace(/,/g, ""), 10);
+    const expenseValue = parseInt(expense.replace(/,/g, ""), 10);
 
     if (isNaN(incomeValue) || isNaN(expenseValue)) return;
 
@@ -67,13 +72,17 @@ export default function CalculatorForm() {
           </div>
           <div className={styles.inputWrapper}>
             <input
-              type="number"
+              type="text"
               id="income"
               name="income"
+              value={income}
               inputMode="numeric"
               placeholder="50,000,000"
               min={0}
-              onChange={(e) => setIncome(e.target.value)}
+              onChange={(e) => {
+                const raw = e.target.value.replace(/[^0-9]/g, "");
+                setIncome(formatNumber(raw));
+              }}
               required
             />
             <span className={styles.inputSuffix}>원</span>
@@ -89,13 +98,17 @@ export default function CalculatorForm() {
           </div>
           <div className={styles.inputWrapper}>
             <input
-              type="number"
+              type="text"
               id="expense"
               name="expense"
+              value={expense}
               inputMode="numeric"
               placeholder="10,000,000"
               min={0}
-              onChange={(e) => setExpense(e.target.value)}
+              onChange={(e) => {
+                const raw = e.target.value.replace(/[^0-9]/g, "");
+                setExpense(formatNumber(raw));
+              }}
               required
             />
             <span className={styles.inputSuffix}>원</span>
