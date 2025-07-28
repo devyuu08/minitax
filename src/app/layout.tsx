@@ -4,6 +4,7 @@ import StyledComponentsRegistry from "@/lib/registry";
 import style from "./layout.module.css";
 import Header from "@/components/Header";
 import { TaxProvider } from "@/context/TaxContext";
+import FloatingMenuButton from "@/components/FloatingMenuButton";
 
 export const metadata: Metadata = {
   title: "MiniTax",
@@ -23,6 +24,7 @@ export default function RootLayout({
             <Header />
             <div className={style.container}>
               <main>{children}</main>
+              <FloatingMenuButton />
               <footer>
                 © 2025 MiniTax. 프리랜서를 위한 스마트한 세금 계산기
               </footer>
