@@ -2,7 +2,7 @@
 
 import { Lock, ScanLine, ShieldCheck } from "lucide-react";
 import styles from "./CalculatorForm.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTaxContext } from "@/context/TaxContext";
 import { useRouter } from "next/navigation";
 import calculateTax from "@/lib/calculateTax";
@@ -12,8 +12,14 @@ export default function CalculatorForm() {
   const [expense, setExpense] = useState("");
   const [isActive, setIsActive] = useState(false);
 
+  const incomeRef = useRef<HTMLInputElement | null>(null);
+
   const { setResult } = useTaxContext();
   const router = useRouter();
+
+  useEffect(() => {
+    incomeRef.current?.focus();
+  }, []);
 
   useEffect(() => {
     const parsedIncome = parseInt(income.replace(/,/g, ""), 10);
@@ -72,6 +78,7 @@ export default function CalculatorForm() {
           </div>
           <div className={styles.inputWrapper}>
             <input
+              ref={incomeRef}
               type="text"
               id="income"
               name="income"
