@@ -15,7 +15,7 @@
 .subTitle {
   font-size: 2.125rem;
   font-weight: 600;
-  color: #374151; /* gray-700 */
+  color: #374151;
 }
 
 .badge {
@@ -27,20 +27,20 @@
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   font-size: 0.875rem;
-  color: #6b7280; /* gray-500 */
+  color: #6b7280;
 }
 
 .greenDot {
   width: 8px;
   height: 8px;
-  background-color: #34d399; /* green-400 */
+  background-color: #34d399;
   border-radius: 9999px;
 }
 
 .title {
-  font-size: 3.5rem; /* 약 48px */
+  font-size: 3.5rem;
   font-weight: 600;
-  color: #111827; /* gray-900 */
+  color: #111827;
   line-height: 1.25;
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
@@ -48,7 +48,7 @@
 
 .description {
   font-size: 1.125rem;
-  color: #9ca3af; /* gray-400 */
+  color: #9ca3af;
   line-height: 1.6;
   margin-top: -0.25rem;
   font-weight: 200;
@@ -67,5 +67,46 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.95rem;
-  color: #374151; /* gray-700 */
+  color: #374151;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .headerSection {
+    padding: 0 1rem 2rem;
+  }
+
+  .subTitle {
+    font-size: 1.25rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
+    padding: 0 0.5rem;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+    gap: 0.3rem;
+  }
+
+  .featureList {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .featureItem {
+    font-size: 0.85rem;
+  }
 }
