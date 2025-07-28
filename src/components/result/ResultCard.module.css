@@ -15,5 +15,10 @@
   gap: 24px;
   flex-wrap: wrap;
   align-items: stretch;
-  height: 380px;
+}
+
+@media (max-width: 860px) {
+  .flexRow {
+    flex-direction: column;
+  }
 }
