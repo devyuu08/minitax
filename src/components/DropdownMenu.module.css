@@ -28,3 +28,32 @@
 .menuContainer a:hover {
   background-color: #f1f5f9;
 }
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .menuContainer {
+    width: 160px;
+    right: 0.5rem;
+    padding: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .menuContainer a {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.6rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .menuContainer {
+    width: 150px;
+    right: 0.5rem;
+    padding: 0.6rem;
+    gap: 0.4rem;
+  }
+
+  .menuContainer a {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.5rem;
+  }
+}
