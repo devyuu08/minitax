@@ -20,6 +20,10 @@
 }
 
 @media (max-width: 860px) {
+  .container {
+    padding: 0 0.25rem;
+  }
+
   .flexRow {
     flex-direction: column;
   }
