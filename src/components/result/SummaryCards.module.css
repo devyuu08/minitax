@@ -71,55 +71,8 @@
   margin-left: 0.25rem;
 }
 
-/* 반응형 */
-@media (max-width: 934px) {
-  .wrapper {
-    justify-content: center;
-  }
-
-  .card {
-    width: 45%;
-    min-width: 260px;
-  }
-}
-
 @media (max-width: 768px) {
   .wrapper {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.25rem;
-  }
-
-  .card {
-    width: 90vw;
-    max-width: 340px;
-  }
-
-  .amount {
-    font-size: 1.5rem;
-    text-align: left;
-  }
-
-  .label {
-    font-size: 0.9rem;
-  }
-
-  .sub {
-    font-size: 0.75rem;
-  }
-
-  .unit {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 420px) {
-  .card {
-    padding: 1.25rem;
-    border-radius: 1.25rem;
-  }
-
-  .amount {
-    font-size: 1.35rem;
+    display: none;
   }
 }
