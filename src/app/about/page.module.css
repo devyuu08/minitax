@@ -224,6 +224,14 @@
     padding: 1.5rem 1rem;
   }
 
+  .container section {
+    margin-bottom: 0.5rem;
+  }
+
+  .divider {
+    margin: 1rem 0;
+  }
+
   .title h1 {
     font-size: 2.5rem;
   }
@@ -266,6 +274,10 @@
 
   .featureItem p {
     font-size: 0.875rem;
+  }
+
+  .promiseSection {
+    margin-top: 1rem;
   }
 
   .promiseSection h2 {
