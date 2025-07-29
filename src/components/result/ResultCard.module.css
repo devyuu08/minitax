@@ -2,10 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 1.2rem;
-  max-width: 1000px;
   margin: 0 auto;
   gap: 1.25rem;
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 .flexRow {
@@ -15,5 +17,14 @@
   gap: 24px;
   flex-wrap: wrap;
   align-items: stretch;
-  height: 380px;
+}
+
+@media (max-width: 860px) {
+  .container {
+    padding: 0 0.25rem;
+  }
+
+  .flexRow {
+    flex-direction: column;
+  }
 }

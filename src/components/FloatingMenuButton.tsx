@@ -14,6 +14,17 @@ const FloatingMenuContainer = styled.div`
   align-items: flex-end;
   gap: 0.75rem;
   z-index: 1000;
+
+  @media (max-width: 768px) {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  @media (max-width: 420px) {
+    bottom: 1rem;
+    right: 1rem;
+    gap: 0.5rem;
+  }
 `;
 
 const FloatingButton = styled.button`
@@ -35,6 +46,16 @@ const FloatingButton = styled.button`
 
   &:hover {
     background-color: #1d4ed8;
+  }
+
+  @media (max-width: 768px) {
+    width: 48px;
+    height: 48px;
+  }
+
+  @media (max-width: 420px) {
+    width: 44px;
+    height: 44px;
   }
 `;
 

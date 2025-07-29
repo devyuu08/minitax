@@ -216,3 +216,91 @@
 .purple {
   background: linear-gradient(90deg, #93c5fd, #c4b5fd, #a5b4fc);
 }
+
+/* 반응형 */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+
+  .container section {
+    margin-bottom: 0.5rem;
+  }
+
+  .divider {
+    margin: 1rem 0;
+  }
+
+  .title h1 {
+    font-size: 2.5rem;
+  }
+
+  .container h2 {
+    font-size: 1.25rem;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .card h3 {
+    font-size: 1rem;
+  }
+
+  .card p {
+    font-size: 0.875rem;
+  }
+
+  .featureItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .textBox {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .featureItem h3 {
+    font-size: 1rem;
+  }
+
+  .featureItem p {
+    font-size: 0.875rem;
+  }
+
+  .promiseSection {
+    margin-top: 1rem;
+  }
+
+  .promiseSection h2 {
+    font-size: 1.5rem;
+  }
+
+  .promiseSection p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .policy_Btn {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.25rem;
+  }
+
+  .iconBox {
+    width: 48px;
+    height: 48px;
+  }
+
+  .iconBox svg {
+    width: 20px;
+    height: 20px;
+  }
+}

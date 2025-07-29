@@ -7,7 +7,7 @@
 }
 
 .card {
-  width: 260px;
+  width: clamp(220px, 30vw, 260px);
   background-color: white;
   border-radius: 1.5rem;
   padding: 1.5rem;
@@ -69,4 +69,10 @@
   font-size: 1rem;
   font-weight: 400;
   margin-left: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    display: none;
+  }
 }

@@ -5,6 +5,7 @@
   text-align: center;
   margin: 0 auto;
   padding-bottom: 2rem;
+  padding-inline: 1rem;
 }
 
 .headerSection h1 {
@@ -67,15 +68,6 @@
   margin-top: 1rem;
 }
 
-@media (min-width: 768px) {
-  .featureList {
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-}
-
 /* 기능 카드 아이템 */
 .featureItem {
   flex: 1;
@@ -125,4 +117,58 @@
 }
 .purple {
   background: #e9d9f8;
+}
+
+@media (max-width: 767px) {
+  .headerSection h1 {
+    font-size: 2.8rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .calculator_Btn {
+    font-size: 1rem;
+    padding: 1rem 2.5rem;
+  }
+
+  .featureItem {
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .featureItem h2 {
+    font-size: 1.3rem;
+    margin: 1.5rem 0;
+  }
+
+  .featureItem p {
+    font-size: 0.95rem;
+  }
+
+  .iconBox {
+    width: 48px;
+    height: 48px;
+  }
+
+  .iconBox svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .featureList {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
 }
