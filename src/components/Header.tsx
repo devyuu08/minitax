@@ -23,6 +23,10 @@ const HeaderWrapper = styled.header`
   height: 60px;
   padding: 0 2rem;
   background-color: transparent;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -45,6 +49,14 @@ const AnimatedText = styled.span`
 
   &:hover {
     transform: scale(1.08);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
+
+  @media (max-width: 420px) {
+    font-size: 1.1rem;
   }
 `;
 
