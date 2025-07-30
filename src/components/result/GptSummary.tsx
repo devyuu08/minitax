@@ -92,7 +92,6 @@ export default function GptSummary({ result }: { result: TaxResult }) {
     }
 
     try {
-      dispatch({ type: "RESET_ALL" });
       dispatch({ type: "LOADING", payload: "default" });
 
       const res = await getGptSummary("default", result);
@@ -142,6 +141,13 @@ export default function GptSummary({ result }: { result: TaxResult }) {
     fetchSummary();
   }, [fetchSummary]);
 
+  const resetSummary = () => {
+    hasFetched.current = false;
+    cacheRef.current = {}; // 캐시 초기화
+    dispatch({ type: "RESET_ALL" }); // 상태 초기화
+    fetchSummary(); // 다시 fetch 트리거
+  };
+
   return (
     <section className={styles.container}>
       <div className={styles.header}>
@@ -157,7 +163,7 @@ export default function GptSummary({ result }: { result: TaxResult }) {
 
         <button
           className={styles.resetButton}
-          onClick={fetchSummary}
+          onClick={resetSummary}
           disabled={state.loading === "default"}
         >
           {state.loading === "default" ? (
