@@ -76,11 +76,15 @@ export default function GptSummary({ result }: { result: TaxResult }) {
     error: null,
   });
 
+  const hasFetched = useRef(false);
   const cacheRef = useRef<
     Partial<Record<"default" | "saving" | "warning", string>>
   >({});
 
   const fetchSummary = useCallback(async () => {
+    if (hasFetched.current) return; // 중복 방지
+    hasFetched.current = true;
+
     // 캐시 확인
     if (cacheRef.current["default"]) {
       dispatch({ type: "SET_SUMMARY", payload: cacheRef.current["default"] });
@@ -135,10 +139,8 @@ export default function GptSummary({ result }: { result: TaxResult }) {
   );
 
   useEffect(() => {
-    if (!state.summary) {
-      fetchSummary();
-    }
-  }, [fetchSummary, state.summary]);
+    fetchSummary();
+  }, [fetchSummary]);
 
   return (
     <section className={styles.container}>
