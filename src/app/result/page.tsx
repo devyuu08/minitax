@@ -4,9 +4,20 @@ import { useTaxContext } from "@/context/TaxContext";
 import ResultCard from "@/components/result/ResultCard";
 import styles from "./page.module.css";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import SkeletonResult from "@/components/SkeletonResult";
 
 export default function Page() {
   const { result } = useTaxContext();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 1200);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   if (!result) {
     return (
@@ -35,7 +46,11 @@ export default function Page() {
       <p className={styles.sub}>
         {result.income.toLocaleString()}원 소득 기준으로 예상한 세금 결과입니다.
       </p>
-      <ResultCard result={result} />
+      {result && isLoading ? (
+        <SkeletonResult />
+      ) : (
+        <ResultCard result={result} />
+      )}
     </div>
   );
 }
