@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useReducer } from "react";
+import { useCallback, useEffect, useReducer, useRef } from "react";
 import styles from "./GptSummary.module.css";
 import {
   AlertTriangle,
@@ -76,11 +76,23 @@ export default function GptSummary({ result }: { result: TaxResult }) {
     error: null,
   });
 
+  const cacheRef = useRef<
+    Partial<Record<"default" | "saving" | "warning", string>>
+  >({});
+
   const fetchSummary = useCallback(async () => {
+    // 캐시 확인
+    if (cacheRef.current["default"]) {
+      dispatch({ type: "SET_SUMMARY", payload: cacheRef.current["default"] });
+      return;
+    }
+
     try {
       dispatch({ type: "RESET_ALL" });
       dispatch({ type: "LOADING", payload: "default" });
+
       const res = await getGptSummary("default", result);
+      cacheRef.current["default"] = res;
       dispatch({ type: "SET_SUMMARY", payload: res });
     } catch (err) {
       console.error("요약 실패:", err);
@@ -93,8 +105,22 @@ export default function GptSummary({ result }: { result: TaxResult }) {
       if (state.loading) return;
       dispatch({ type: "LOADING", payload: type });
 
+      // 캐시 확인
+      if (cacheRef.current[type]) {
+        if (type === "saving") {
+          dispatch({ type: "SET_STRATEGY", payload: cacheRef.current[type] });
+        } else {
+          dispatch({ type: "SET_WARNING", payload: cacheRef.current[type] });
+        }
+        return;
+      }
+
+      dispatch({ type: "LOADING", payload: type });
+
       try {
         const res = await getGptSummary(type, result);
+        cacheRef.current[type] = res;
+
         if (type === "saving") {
           dispatch({ type: "SET_STRATEGY", payload: res });
         } else {
