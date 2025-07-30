@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useReducer } from "react";
+import { useCallback, useEffect, useReducer, useRef } from "react";
 import styles from "./GptSummary.module.css";
 import {
   AlertTriangle,
@@ -76,11 +76,26 @@ export default function GptSummary({ result }: { result: TaxResult }) {
     error: null,
   });
 
+  const hasFetched = useRef(false);
+  const cacheRef = useRef<
+    Partial<Record<"default" | "saving" | "warning", string>>
+  >({});
+
   const fetchSummary = useCallback(async () => {
+    if (hasFetched.current) return; // 중복 방지
+    hasFetched.current = true;
+
+    // 캐시 확인
+    if (cacheRef.current["default"]) {
+      dispatch({ type: "SET_SUMMARY", payload: cacheRef.current["default"] });
+      return;
+    }
+
     try {
-      dispatch({ type: "RESET_ALL" });
       dispatch({ type: "LOADING", payload: "default" });
+
       const res = await getGptSummary("default", result);
+      cacheRef.current["default"] = res;
       dispatch({ type: "SET_SUMMARY", payload: res });
     } catch (err) {
       console.error("요약 실패:", err);
@@ -93,8 +108,22 @@ export default function GptSummary({ result }: { result: TaxResult }) {
       if (state.loading) return;
       dispatch({ type: "LOADING", payload: type });
 
+      // 캐시 확인
+      if (cacheRef.current[type]) {
+        if (type === "saving") {
+          dispatch({ type: "SET_STRATEGY", payload: cacheRef.current[type] });
+        } else {
+          dispatch({ type: "SET_WARNING", payload: cacheRef.current[type] });
+        }
+        return;
+      }
+
+      dispatch({ type: "LOADING", payload: type });
+
       try {
         const res = await getGptSummary(type, result);
+        cacheRef.current[type] = res;
+
         if (type === "saving") {
           dispatch({ type: "SET_STRATEGY", payload: res });
         } else {
@@ -109,10 +138,15 @@ export default function GptSummary({ result }: { result: TaxResult }) {
   );
 
   useEffect(() => {
-    if (!state.summary) {
-      fetchSummary();
-    }
-  }, [fetchSummary, state.summary]);
+    fetchSummary();
+  }, [fetchSummary]);
+
+  const resetSummary = () => {
+    hasFetched.current = false;
+    cacheRef.current = {}; // 캐시 초기화
+    dispatch({ type: "RESET_ALL" }); // 상태 초기화
+    fetchSummary(); // 다시 fetch 트리거
+  };
 
   return (
     <section className={styles.container}>
@@ -129,7 +163,7 @@ export default function GptSummary({ result }: { result: TaxResult }) {
 
         <button
           className={styles.resetButton}
-          onClick={fetchSummary}
+          onClick={resetSummary}
           disabled={state.loading === "default"}
         >
           {state.loading === "default" ? (
