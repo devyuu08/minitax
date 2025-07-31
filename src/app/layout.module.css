@@ -1,0 +1,17 @@
+.container {
+  max-width: 1000px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 60px 15px 0;
+}
+
+.container > main {
+  padding-top: 30px;
+}
+
+.container > footer {
+  padding: 50px 0px;
+  font-size: small;
+  text-align: center;
+  color: gray;
+}

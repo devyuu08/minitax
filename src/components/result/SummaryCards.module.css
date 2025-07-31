@@ -1,0 +1,84 @@
+.wrapper {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+}
+
+.card {
+  width: clamp(220px, 30vw, 260px);
+  background-color: white;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.iconBox {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 아이콘 박스 색상별 테마 */
+.blue {
+  background: #3b82f6;
+}
+.green {
+  background: #10b981;
+}
+.orange {
+  background: #f97316;
+}
+
+/* 강조 텍스트 색상 – 예상 세액 금액 */
+.orangeText {
+  color: #f97316;
+}
+
+.label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.sub {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* 금액 표시 */
+.amount {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  color: #111827;
+  text-align: right;
+}
+
+/* 금액 옆 단위 텍스트(원) */
+.unit {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-left: 0.25rem;
+}
+
+/* 모바일 대응 – 화면 폭 768px 이하에서는 카드 숨김 처리 */
+@media (max-width: 768px) {
+  .wrapper {
+    display: none;
+  }
+}

@@ -1,0 +1,331 @@
+.container {
+  background: #ffffff;
+  padding: 2rem 3rem;
+  border-radius: 1.25rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 640px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+/* 아이콘 배경 – 그라디언트 원형 박스 */
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  border-radius: 1rem;
+}
+
+.formTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.formSubtitle {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* 입력 필드 wrapper */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.field label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+/* 라벨 왼쪽 점 표시 (시각적 구분용) */
+.labelRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.greenDot {
+  width: 15px;
+  height: 15px;
+  background-color: #92d2bb;
+  border-radius: 5px;
+}
+
+.yellowDot {
+  width: 15px;
+  height: 15px;
+  background-color: #f5e572;
+  border-radius: 5px;
+}
+
+/* input field wrapper – input과 단위 위치 설정 */
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* 입력창 기본 스타일 */
+.inputWrapper input {
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 1rem 2.5rem 1rem 1.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  background: #f9fafb;
+  color: #111827;
+  outline: none;
+}
+
+/* 포커스 시 시각 효과 */
+.inputWrapper input:focus {
+  outline: none;
+  border: 2px solid #6366f1;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* '원' 단위 텍스트 */
+.inputSuffix {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #6b7280;
+  pointer-events: none; /* 클릭 방해 안 되게 */
+}
+
+.field p {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+}
+
+.submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, #3b82f6, #6366f1);
+  color: white;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.submit:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(90deg, #2563eb, #4f46e5);
+}
+
+/* 비활성화 상태 (입력값 부족 시) */
+.disabled {
+  background: #e5e7eb; /* Tailwind gray-200 */
+  color: #9ca3af; /* Tailwind gray-400 */
+  box-shadow: none;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* 계산 방식 안내 박스 */
+.noticeBox {
+  background-color: #f9fbff;
+  border: 1px solid #e0e7ff;
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.noticeHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* 아이콘과 텍스트 간격 확대 */
+  margin-bottom: 1rem;
+}
+
+.noticeBox h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  color: #1e3a8a;
+}
+
+.noticeBox p {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+/* 안내 항목 리스트 */
+.noticeList {
+  list-style: disc;
+  padding-left: 1.5rem;
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+/* 아이콘 배경 강조 */
+.noticeHeader svg {
+  background-color: #ebf1f7;
+  padding: 0.2rem;
+  border-radius: 50%;
+}
+
+/* 반응형 스타일 – 태블릿 이하 */
+@media (max-width: 768px) {
+  .container {
+    max-width: 440px;
+    padding: 1.5rem 1.7rem;
+    border-radius: 1rem;
+  }
+
+  .formTitle {
+    font-size: 1.15rem;
+    text-align: center;
+  }
+
+  .formSubtitle {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .field label {
+    font-size: 0.9rem;
+  }
+
+  .inputWrapper input {
+    font-size: 1.25rem;
+    padding: 0.85rem 2.2rem 0.85rem 1rem;
+  }
+
+  .inputSuffix {
+    font-size: 0.9rem;
+  }
+
+  .submit {
+    padding: 0.85rem;
+    font-size: 0.95rem;
+    border-radius: 0.65rem;
+  }
+
+  .noticeBox {
+    padding: 1.25rem 1rem;
+  }
+
+  .noticeBox p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .noticeBox h3 {
+    font-size: 1.05rem;
+  }
+
+  .noticeList {
+    font-size: 0.9rem;
+    padding-left: 1.25rem;
+  }
+}
+
+/* 모바일 대응 – 480px 이하 */
+@media (max-width: 480px) {
+  .formTitle {
+    font-size: 1.05rem;
+  }
+
+  .formSubtitle {
+    font-size: 0.75rem;
+  }
+
+  .field label {
+    font-size: 0.85rem;
+  }
+
+  .inputWrapper input {
+    font-size: 1.1rem;
+    padding: 0.75rem 2rem 0.75rem 0.85rem;
+  }
+
+  .inputSuffix {
+    font-size: 0.85rem;
+  }
+
+  .submit {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+    border-radius: 0.6rem;
+  }
+
+  .noticeBox {
+    padding: 1rem;
+  }
+
+  .noticeBox h3 {
+    font-size: 1rem;
+  }
+
+  .noticeBox p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+}
+
+/* 초소형 기기 대응 – 360px 이하 */
+@media (max-width: 360px) {
+  .formTitle {
+    font-size: 1rem;
+  }
+
+  .inputWrapper input {
+    font-size: 1rem;
+    padding: 0.65rem 1.8rem 0.65rem 0.75rem;
+  }
+
+  .submit {
+    font-size: 0.85rem;
+    padding: 0.7rem;
+  }
+
+  .noticeBox p {
+    font-size: 0.7rem;
+    line-height: 1.45;
+  }
+
+  .noticeBox h3 {
+    font-size: 0.9rem;
+  }
+}

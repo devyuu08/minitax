@@ -1,0 +1,150 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* 상단 바: "다시 계산하기" 버튼이 우측에 배치됨 */
+.topBar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+/* "다시 계산하기" 버튼 스타일 */
+.recalculateButton {
+  background-color: #f1f5f9;
+  color: #1e3a8a;
+  border: 1px solid #cbd5e1;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.recalculateButton:hover {
+  background-color: #e0f2fe;
+}
+
+/* 계산 완료 배지 (상태 알림용) */
+.badge {
+  display: inline-block;
+  background-color: #e0f2fe;
+  color: #0284c7;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  margin-bottom: 0.75rem;
+  align-self: center;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.sub {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.errorCard {
+  background-color: #f8f9fb;
+  border: 1px solid #e0e3e7;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  max-width: 420px;
+  margin: 5rem auto;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+}
+
+.errorCard h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d2d2d;
+  margin-bottom: 1rem;
+}
+
+.errorCard p {
+  font-size: 1rem;
+  color: #5f6368;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* 홈으로 돌아가기 버튼 스타일 */
+.backButton {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #475569;
+  color: #ffffff;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.backButton:hover {
+  background-color: #334155; /* slate-800 */
+}
+
+/* 반응형 스타일 - 모바일 대응 */
+
+@media (max-width: 480px) {
+  .recalculateButton {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .sub {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .topBar {
+    justify-content: center;
+  }
+
+  .badge {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .errorCard {
+    padding: 1.5rem;
+    margin: 3rem auto;
+  }
+
+  .errorCard h2 {
+    font-size: 1.3rem;
+  }
+
+  .errorCard p {
+    font-size: 0.95rem;
+  }
+
+  .backButton {
+    font-size: 0.9rem;
+    padding: 0.65rem 1.25rem;
+  }
+}

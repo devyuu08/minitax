@@ -1,0 +1,332 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffff;
+  border-radius: 1rem;
+}
+
+.container h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.container section {
+  padding: 0 1rem;
+  width: 100%;
+  /* border: 1px solid blue; */
+}
+
+.iconBox {
+  width: 56px;
+  height: 56px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconBox svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* 카드 타입별 아이콘 배경색 */
+.card.notice .iconBox {
+  background-color: #fef3c7;
+}
+
+.card.ai .iconBox {
+  background-color: #dbeafe;
+}
+
+.card.accuracy .iconBox {
+  background-color: #dcfce7;
+}
+
+.card.privacy .iconBox {
+  background-color: #f3e8ff;
+}
+
+.card.guide .iconBox {
+  background-color: #f3f4f6;
+}
+
+.title h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 1rem;
+  padding: 1rem 0;
+}
+
+.title div {
+  width: 5.8rem;
+  height: 4px;
+  background: linear-gradient(to right, #f3c66c, #f88512);
+  margin: 0 auto 2rem;
+  border-radius: 9999px;
+}
+
+/* 안내 카드 기본 스타일 */
+.card {
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.card h2 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.3rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+/* 카드 배경색 + 테두리색 타입별 지정 */
+.notice {
+  background-color: #fefce8;
+  border: 1px solid #fde68a;
+}
+
+.ai {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+.accuracy {
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+}
+
+.privacy {
+  background-color: #f5f3ff;
+  border: 1px solid #ddd6fe;
+}
+
+.guide {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+/* 카드 내부 텍스트 정렬 */
+.textBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: start;
+}
+
+/* 카드 하단 경고 또는 안내 문구 박스 스타일 */
+.textBox > div:last-child {
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* 카드 하단 안내문 배경 및 폰트 색상 – 카드별 다르게 지정 */
+.accuracy .textBox > div:last-child {
+  background: #cbf6da;
+  color: #166534;
+}
+.privacy .textBox > div:last-child {
+  background: #f3e8ff;
+  color: #6b21a8;
+}
+.ai .textBox > div:last-child {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+/* 번호 리스트 (권장 사용법 리스트) */
+.numberList {
+  list-style: none;
+  padding: 0;
+}
+
+/* 리스트 항목 스타일 – 줄간격과 왼쪽 정렬 */
+.numberList li {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* 리스트 숫자 스타일 – 고정 너비, 강조 색상 */
+.numberList span {
+  display: inline-block;
+  width: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-right: 0.5rem;
+  color: #4f46e5;
+}
+
+/* 서비스 이용 동의 섹션 */
+.agreementSection {
+  background: linear-gradient(to right, #f5f3ff, #f0f9ff);
+  border-radius: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(203, 213, 225, 0.7);
+}
+
+.agreementSection h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.agreementSection p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 2rem;
+}
+
+/* 동의 섹션 내 텍스트 정렬 */
+.agreementContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+/* "서비스 소개 보기" 버튼 */
+.about_Btn {
+  background: white;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  color: #1f2937;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+  margin-bottom: 3rem;
+}
+
+.about_Btn:hover {
+  background: #f9fafb;
+  transform: translateY(-1px);
+}
+
+/* 보라색 그라디언트 배경 – 체크 아이콘 박스 전용 */
+.purple {
+  background: linear-gradient(90deg, #93c5fd, #c4b5fd, #a5b4fc);
+}
+
+/* 반응형 – 모바일 기준 768px 이하 */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.75rem;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .card h2 {
+    font-size: 1rem;
+    margin: 0.45rem 0;
+  }
+
+  .card p {
+    font-size: 0.85rem;
+    margin: 0.25rem 0;
+    line-height: 1.5;
+  }
+
+  .textBox {
+    align-items: center;
+    text-align: center;
+  }
+
+  .textBox > div:last-child {
+    font-size: 0.85rem;
+    padding: 0.75rem 1rem;
+    margin-top: 0.25rem;
+    gap: 0.5rem;
+  }
+
+  .iconBox {
+    width: 40px;
+    height: 40px;
+  }
+
+  .iconBox svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .title h1 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .title div {
+    height: 3px;
+    width: 4.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .numberList {
+    padding-left: 0.25rem;
+    margin-top: 0.25rem;
+  }
+
+  .numberList li {
+    text-align: center;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .numberList span {
+    width: 1.3rem;
+    font-size: 1rem;
+    margin-right: 0.4rem;
+  }
+
+  .numberList strong {
+    font-weight: 600;
+    word-break: keep-all;
+  }
+
+  .agreementSection h2 {
+    font-size: 1.5rem;
+  }
+
+  .agreementSection p {
+    font-size: 0.95rem;
+    margin-top: 0.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .about_Btn {
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+  }
+}
