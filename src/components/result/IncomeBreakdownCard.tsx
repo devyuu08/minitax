@@ -10,20 +10,26 @@ type Props = {
 
 export default function IncomeBreakdownCard({ result }: Props) {
   return (
-    <div className={styles.card}>
-      <div className={styles.header}>
+    <article
+      className={styles.card}
+      role="region"
+      aria-labelledby="income-breakdown-heading"
+    >
+      <header className={styles.header}>
         <div className={`${styles.iconBox} ${styles.blue}`}>
           <FileText size={20} />
         </div>
         <div>
-          <h2 className={styles.title}>소득 내역</h2>
+          <h2 id="income-breakdown-heading" className={styles.title}>
+            소득 내역
+          </h2>
           <p className={styles.subtitle}>수입과 지출 상세</p>
         </div>
-      </div>
+      </header>
 
       <div className={styles.divider} />
 
-      <ul className={styles.list}>
+      <ul className={styles.list} aria-label="소득 세부 항목">
         <li>
           <span>연간 총소득</span>
           <span className={styles.income}>
@@ -50,6 +56,6 @@ export default function IncomeBreakdownCard({ result }: Props) {
           {result.taxableIncome.toLocaleString()}원
         </span>
       </div>
-    </div>
+    </article>
   );
 }
