@@ -11,11 +11,26 @@ import {
 } from "lucide-react";
 import styles from "./page.module.css";
 import Link from "next/link";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "MiniTax – 서비스 소개",
   description:
     "MiniTax는 프리랜서 및 개인사업자를 위한 종합소득세 계산기 웹앱입니다. 세금 이해를 돕기 위한 UX 중심의 AI 설명 기능을 제공합니다.",
+  openGraph: {
+    title: "MiniTax – 서비스 소개",
+    description:
+      "MiniTax는 프리랜서 및 개인사업자를 위한 종합소득세 계산기 웹앱입니다. 세금 이해를 돕기 위한 UX 중심의 AI 설명 기능을 제공합니다.",
+    images: ["/thumbnail.png"],
+    siteName: "MiniTax",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MiniTax – 종합소득세 계산기",
+    description: "AI가 쉽고 빠르게 설명해주는 프리랜서 전용 세금 계산기",
+    images: ["/thumbnail.png"],
+  },
 };
 
 export default function Page() {
