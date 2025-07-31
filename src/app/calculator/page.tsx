@@ -2,6 +2,12 @@ import styles from "./page.module.css";
 import { ShieldCheck, Bot, Lock } from "lucide-react";
 import CalculatorForm from "@/components/calculator/CalculatorForm";
 
+export const metadata = {
+  title: "MiniTax – 종합소득세 계산기",
+  description:
+    "프리랜서와 개인사업자를 위한 스마트한 종합소득세 계산기. 연소득과 필요경비만 입력하면 예상 세금과 AI 설명을 제공합니다.",
+};
+
 export default function Page() {
   return (
     <div className={styles.container}>

@@ -2,6 +2,12 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { Bot, Calculator, Lightbulb } from "lucide-react";
 
+export const metadata = {
+  title: "MiniTax – 프리랜서를 위한 종합소득세 계산기",
+  description:
+    "MiniTax는 연소득과 필요경비만 입력하면 세금 계산과 AI 설명을 제공하는 종합소득세 계산기입니다.",
+};
+
 export default function Home() {
   return (
     <div className={styles.container}>

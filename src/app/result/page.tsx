@@ -7,6 +7,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import SkeletonResult from "@/components/SkeletonResult";
 
+export const metadata = {
+  title: "MiniTax – 종합소득세 계산 결과",
+  description:
+    "입력한 연소득과 필요경비를 기준으로 계산된 종합소득세 예상 결과를 확인하세요. AI가 세금 구조도 쉽게 설명해드립니다.",
+};
+
 export default function Page() {
   const { result } = useTaxContext();
   const [isLoading, setIsLoading] = useState(true);

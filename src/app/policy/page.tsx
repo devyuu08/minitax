@@ -12,6 +12,12 @@ import {
 import styles from "./page.module.css";
 import Link from "next/link";
 
+export const metadata = {
+  title: "MiniTax – 이용 안내 및 고지사항",
+  description:
+    "MiniTax의 서비스 이용 시 주의사항, AI 설명 기능의 안내, 그리고 책임의 범위에 대해 안내합니다.",
+};
+
 export default function Page() {
   return (
     <div className={styles.container}>

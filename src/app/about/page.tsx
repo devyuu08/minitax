@@ -12,6 +12,12 @@ import {
 import styles from "./page.module.css";
 import Link from "next/link";
 
+export const metadata = {
+  title: "MiniTax – 서비스 소개",
+  description:
+    "MiniTax는 프리랜서 및 개인사업자를 위한 종합소득세 계산기 웹앱입니다. 세금 이해를 돕기 위한 UX 중심의 AI 설명 기능을 제공합니다.",
+};
+
 export default function Page() {
   return (
     <div className={styles.container}>
