@@ -18,6 +18,7 @@
   padding: 1.5rem 2rem;
 }
 
+/* 아이콘 + 텍스트 묶음 왼쪽 정렬 */
 .left {
   display: flex;
   align-items: center;
@@ -35,6 +36,7 @@
   font-size: 20px;
 }
 
+/* 제목 + 부제목 텍스트 그룹 */
 .textGroup {
   display: flex;
   flex-direction: column;
@@ -59,6 +61,7 @@
   line-height: 1.5;
 }
 
+/* 다시 설명 버튼 스타일 */
 .resetButton {
   background: white;
   border: 1px solid #e5e7eb;
@@ -77,6 +80,7 @@
   background: #f3f4f6;
 }
 
+/* GPT 요약 텍스트 라벨 */
 .label {
   background-color: #e0edff;
   color: #2563eb;
@@ -90,6 +94,7 @@
   border: 1px dashed #60a5fa;
 }
 
+/* 추가 설명 버튼 묶음 */
 .buttonWrapper {
   display: flex;
   gap: 1rem;
@@ -99,6 +104,7 @@
   flex-wrap: wrap;
 }
 
+/* 공통 버튼 스타일 */
 .labelButton {
   padding: 12px;
   font-size: 0.85rem;
@@ -110,19 +116,21 @@
   transition: all 0.2s ease;
 }
 
+/* 절세 전략 버튼 (녹색 계열) */
 .strategy {
   background-color: #e6f4ea;
   color: #15803d;
   border-color: #86efac;
 }
 
+/* 신고 유의사항 버튼 (주황 계열) */
 .warning {
   background-color: #fff7ed;
   color: #b45309;
   border-color: #fdba74;
 }
 
-/* 반응형 */
+/* 태블릿 이하 반응형 대응 */
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -176,6 +184,7 @@
   }
 }
 
+/* 모바일(420px 이하) 반응형 대응 */
 @media (max-width: 420px) {
   .textGroup h2 {
     font-size: 1.05rem;

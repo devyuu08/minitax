@@ -5,6 +5,14 @@ import styled from "styled-components";
 import { Menu, X } from "lucide-react";
 import DropdownMenu from "./DropdownMenu";
 
+/**
+ * FloatingMenu
+ * - 우측 하단에 고정된 플로팅 버튼을 제공
+ * - 버튼 클릭 시 DropdownMenu가 토글되며, 외부 클릭 시 자동 닫힘 처리됨
+ * - 모바일 환경에서도 위치와 크기 대응
+ */
+
+// 플로팅 메뉴 전체 컨테이너 (버튼 + 드롭다운 포함)
 const FloatingMenuContainer = styled.div`
   position: fixed;
   bottom: 2rem;
@@ -27,6 +35,7 @@ const FloatingMenuContainer = styled.div`
   }
 `;
 
+// 메인 플로팅 버튼 스타일
 const FloatingButton = styled.button`
   position: fixed;
   bottom: 2rem;
@@ -60,8 +69,8 @@ const FloatingButton = styled.button`
 `;
 
 export default function FloatingMenu() {
-  const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false); // 메뉴 열림 상태
+  const menuRef = useRef<HTMLDivElement>(null); // 외부 클릭 감지용 ref
 
   // 바깥 클릭 시 닫힘 처리
   useEffect(() => {
@@ -76,8 +85,10 @@ export default function FloatingMenu() {
 
   return (
     <FloatingMenuContainer ref={menuRef}>
+      {/* 메뉴가 열려 있을 때만 드롭다운 표시 */}
       {isOpen && <DropdownMenu />}
 
+      {/* 플로팅 버튼 클릭 시 메뉴 토글 */}
       <FloatingButton onClick={() => setIsOpen((prev) => !prev)}>
         {isOpen ? <X size={24} /> : <Menu size={24} />}
       </FloatingButton>

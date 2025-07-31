@@ -14,14 +14,14 @@ import { TaxResult } from "@/types/tax";
 import { getTaxRateLabel } from "@/lib/getTaxRateLabel";
 import GptSection from "./GptSection";
 
-// const mockSummary = [
-//   "귀하의 <strong>연소득은 50,000,000원</strong>이고, <strong>필요경비는 10,000,000원</strong>으로 계산되었습니다.",
-//   "<strong>순소득 40,000,000원</strong>에서 기본공제 126만원을 제외한 <strong>과세표준은 38,500,000원</strong>입니다.",
-//   "이 구간에는 <strong>실효세율 9.93%</strong>가 적용되어 <strong>소득세 4,515,000원</strong>이 산출됩니다.",
-//   "여기에 <strong>지방소득세 451,500원</strong>을 합쳐 <strong>총 납부 예상 세액은 4,966,500원</strong>입니다.",
-//   "실제 납부액은 건강보험료, 국민연금, 주민세 등 추가 항목에 따라 달라질 수 있습니다.",
-// ];
+/**
+ * GptSummary
+ * - 결과 페이지에서 GPT 요약 설명을 렌더링하는 컴포넌트
+ * - 기본 요약 + 절세 전략 + 신고 유의사항을 선택적으로 요청/표시
+ * - 중복 요청 방지를 위한 캐싱 및 useReducer로 상태 관리
+ */
 
+// GPT 응답 상태 타입 정의
 type GptState = {
   summary: string | null;
   strategy: string | null;
@@ -30,6 +30,7 @@ type GptState = {
   error: null | "default" | "saving" | "warning";
 };
 
+// GPT 상태 변경 액션 정의
 type Action =
   | { type: "LOADING"; payload: GptState["loading"] }
   | { type: "ERROR"; payload: GptState["error"] }
@@ -39,6 +40,7 @@ type Action =
   | { type: "RESET_ERROR" }
   | { type: "RESET_ALL" };
 
+// 상태 변경 로직 정의
 function gptReducer(state: GptState, action: Action): GptState {
   switch (action.type) {
     case "LOADING":
@@ -68,6 +70,7 @@ function gptReducer(state: GptState, action: Action): GptState {
 }
 
 export default function GptSummary({ result }: { result: TaxResult }) {
+  // 상태 초기화 및 디스패치 함수 생성
   const [state, dispatch] = useReducer(gptReducer, {
     summary: null,
     strategy: null,
@@ -76,11 +79,14 @@ export default function GptSummary({ result }: { result: TaxResult }) {
     error: null,
   });
 
-  const hasFetched = useRef(false);
+  const hasFetched = useRef(false); // 중복 요청 방지용 ref
+
+  // 응답 캐싱용 ref (요약 유형별로 저장)
   const cacheRef = useRef<
     Partial<Record<"default" | "saving" | "warning", string>>
   >({});
 
+  // 기본 요약 설명 fetch 함수 (중복 요청 방지 및 캐싱 포함)
   const fetchSummary = useCallback(async () => {
     if (hasFetched.current) return; // 중복 방지
     hasFetched.current = true;
@@ -103,6 +109,7 @@ export default function GptSummary({ result }: { result: TaxResult }) {
     }
   }, [result]);
 
+  // 버튼 클릭 시 추가 설명 요청 (절세 전략 또는 신고 유의사항)
   const handleExplainClick = useCallback(
     async (type: "saving" | "warning") => {
       if (state.loading) return;
@@ -141,6 +148,7 @@ export default function GptSummary({ result }: { result: TaxResult }) {
     fetchSummary();
   }, [fetchSummary]);
 
+  // 다시 설명 버튼 클릭 시 캐시 및 상태 초기화
   const resetSummary = () => {
     hasFetched.current = false;
     cacheRef.current = {}; // 캐시 초기화

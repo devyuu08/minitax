@@ -10,6 +10,7 @@
   box-sizing: border-box;
 }
 
+/* 카드 2개(소득 내역 + 세액 계산) 나란히 배치하는 Flex 박스 */
 .flexRow {
   display: flex;
   flex-direction: row;
@@ -19,10 +20,12 @@
   align-items: stretch;
 }
 
+/* 내부의 각 section 요소는 동일한 너비 비율로 나눔 */
 .flexRow > section {
   flex: 1;
 }
 
+/* 반응형 – 화면 너비 860px 이하 */
 @media (max-width: 860px) {
   .container {
     padding: 0 0.25rem;

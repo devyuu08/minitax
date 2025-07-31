@@ -36,12 +36,15 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className={styles.container}>
+      {/* 페이지 타이틀 영역 */}
       <section className={styles.title} aria-labelledby="pageTitle">
         <h1 id="pageTitle">이용 안내 및 AI 설명 고지</h1>
         <div />
       </section>
 
+      {/* 안내 카드 영역 */}
       <section>
+        {/* 1. 중요 안내사항 카드 */}
         <div
           className={`${styles.card} ${styles.notice}`}
           role="region"
@@ -58,6 +61,7 @@ export default function Page() {
           </div>
         </div>
 
+        {/* 2. AI 설명 고지사항 카드 */}
         <div
           className={`${styles.card} ${styles.ai}`}
           role="region"
@@ -89,6 +93,7 @@ export default function Page() {
           </div>
         </div>
 
+        {/* 3. 계산 결과 정확성 안내 */}
         <div
           className={`${styles.card} ${styles.accuracy}`}
           role="region"
@@ -120,6 +125,7 @@ export default function Page() {
           </div>
         </div>
 
+        {/* 4. 개인정보 보호 안내 */}
         <div
           className={`${styles.card} ${styles.privacy}`}
           role="region"
@@ -150,6 +156,7 @@ export default function Page() {
           </div>
         </div>
 
+        {/* 5. 권장 이용 방법 안내 (리스트 형태) */}
         <div
           className={`${styles.card} ${styles.guide}`}
           role="region"
@@ -182,6 +189,7 @@ export default function Page() {
         </div>
       </section>
 
+      {/* 마지막 동의 섹션 */}
       <section
         className={styles.agreementSection}
         role="region"
@@ -198,6 +206,7 @@ export default function Page() {
             <br /> 안전하고 현명한 세금 관리를 위해 항상 신중하게 이용해주세요.
           </p>
         </div>
+
         <Link
           href="/about"
           className={styles.about_Btn}

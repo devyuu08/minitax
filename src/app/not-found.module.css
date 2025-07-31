@@ -34,6 +34,7 @@
   background-color: #334155;
 }
 
+/* 반응형 스타일 */
 @media (max-width: 480px) {
   .title {
     font-size: 1.5rem;

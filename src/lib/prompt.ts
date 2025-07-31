@@ -1,5 +1,17 @@
 import { TaxResult } from "@/types/tax";
 
+/**
+ * getPrompt
+ * - GPT에게 전달할 프롬프트 문장을 반환하는 함수
+ * - 'default'는 계산 결과 요약 설명, 'saving'은 절세 전략, 'warning'은 신고 시 유의사항을 생성함
+ * - 각 타입에 따라 사용자에게 친절하고 쉬운 문장으로 설명하도록 유도
+ * - 중요한 숫자와 키워드는 <strong> 태그로 강조
+ *
+ * @param type - 설명 종류 ("default" | "saving" | "warning")
+ * @param result - 계산된 세금 결과 객체 (TaxResult)
+ * @returns GPT 요청용 문자열 프롬프트
+ */
+
 export default function getPrompt(
   type: "default" | "saving" | "warning",
   result: TaxResult
