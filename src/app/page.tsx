@@ -25,8 +25,9 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <section className={styles.headerSection}>
+    <main className={styles.container}>
+      {/* Hero Section */}
+      <header className={styles.headerSection} role="banner">
         <h1>MiniTax</h1>
 
         <div className={styles.divider} />
@@ -38,7 +39,7 @@ export default function Home() {
           복잡한 세법. 이제 고민하지 마세요. 연소득과 필요경비만 입력하면 AI가
           세금을 <br /> 계산하고 쉽게 설명해드립니다.
         </p>
-      </section>
+      </header>
       <Link
         href="/calculator"
         className={styles.calculator_Btn}
@@ -47,6 +48,7 @@ export default function Home() {
         지금 계산 시작하기
       </Link>
 
+      {/* Feature Section */}
       <section className={styles.featureList}>
         <div className={styles.featureItem}>
           <div className={`${styles.iconBox} ${styles.blue}`}>
@@ -70,6 +72,6 @@ export default function Home() {
           <p>개인 상황에 맞는 절세 방법과 신고 유의사항을 제공합니다.</p>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
