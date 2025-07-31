@@ -11,9 +11,20 @@ interface SummaryCardProps {
 export default function SummaryCards({ result }: SummaryCardProps) {
   if (!result) return null;
   return (
-    <section className={styles.wrapper}>
+    <section
+      className={styles.wrapper}
+      aria-labelledby="summary-cards-heading"
+      role="region"
+    >
+      <h2 id="summary-cards-heading" className="sr-only">
+        세금 요약 카드
+      </h2>
+
       {/* 총 소득 */}
-      <div className={styles.card}>
+      <article className={styles.card} aria-labelledby="total-income-heading">
+        <h3 id="total-income-heading" className="sr-only">
+          총 소득
+        </h3>
         <div className={styles.header}>
           <div className={`${styles.iconBox} ${styles.blue}`}>
             <DollarSignIcon size={24} color="white" />
@@ -27,10 +38,13 @@ export default function SummaryCards({ result }: SummaryCardProps) {
           {result.income.toLocaleString()}{" "}
           <span className={styles.unit}>원</span>
         </div>
-      </div>
+      </article>
 
       {/* 순소득 */}
-      <div className={styles.card}>
+      <article className={styles.card} aria-labelledby="net-income-heading">
+        <h3 id="net-income-heading" className="sr-only">
+          순소득
+        </h3>
         <div className={styles.header}>
           <div className={`${styles.iconBox} ${styles.green}`}>
             <Calculator size={24} color="white" />
@@ -44,10 +58,13 @@ export default function SummaryCards({ result }: SummaryCardProps) {
           {result.taxableIncome.toLocaleString()}{" "}
           <span className={styles.unit}>원</span>
         </div>
-      </div>
+      </article>
 
       {/* 예상 세액 */}
-      <div className={styles.card}>
+      <article className={styles.card} aria-labelledby="estimated-tax-heading">
+        <h3 id="estimated-tax-heading" className="sr-only">
+          예상 세액
+        </h3>
         <div className={styles.header}>
           <div className={`${styles.iconBox} ${styles.orange}`}>
             <SearchCheckIcon size={24} color="white" />
@@ -63,7 +80,7 @@ export default function SummaryCards({ result }: SummaryCardProps) {
           </span>
           <span className={styles.unit}> 원</span>
         </div>
-      </div>
+      </article>
     </section>
   );
 }
