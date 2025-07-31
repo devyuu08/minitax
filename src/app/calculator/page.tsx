@@ -25,8 +25,8 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className={styles.container}>
-      <section className={styles.headerSection}>
+    <main className={styles.container}>
+      <header className={styles.headerSection} role="banner">
         <h2 className={styles.subTitle}>MiniTax</h2>
         <div className={styles.badge}>
           <span className={styles.greenDot} />
@@ -39,8 +39,8 @@ export default function Page() {
           복잡한 세법도 이제 간단하게
         </p>
 
-        <div className={styles.featureList}>
-          <div className={styles.featureItem}>
+        <div className={styles.featureList} aria-label="서비스 특징">
+          <div className={styles.featureItem} aria-hidden="true">
             <ShieldCheck size={16} color="#10b981" />
             정확한 계산
           </div>
@@ -53,8 +53,8 @@ export default function Page() {
             개인정보 보호
           </div>
         </div>
-      </section>
+      </header>
       <CalculatorForm />
-    </div>
+    </main>
   );
 }
