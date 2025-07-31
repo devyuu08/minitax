@@ -90,11 +90,12 @@ export default function CalculatorForm() {
                 const raw = e.target.value.replace(/[^0-9]/g, "");
                 setIncome(formatNumber(raw));
               }}
+              aria-describedby="incomeDesc"
               required
             />
             <span className={styles.inputSuffix}>원</span>
           </div>
-          <p>사업소득, 프리랜서 수입 등 모든 소득 포함</p>
+          <p id="incomeDesc">사업소득, 프리랜서 수입 등 모든 소득 포함</p>
         </div>
 
         {/* 필요경비 입력 */}
@@ -116,11 +117,14 @@ export default function CalculatorForm() {
                 const raw = e.target.value.replace(/[^0-9]/g, "");
                 setExpense(formatNumber(raw));
               }}
+              aria-describedby="expenseDesc"
               required
             />
-            <span className={styles.inputSuffix}>원</span>
+            <span className={styles.inputSuffix} aria-hidden="true">
+              원
+            </span>
           </div>
-          <p>사업 관련 지출, 재료비, 임차료 등</p>
+          <p id="expenseDesc"> 사업 관련 지출, 재료비, 임차료 등</p>
         </div>
 
         {/* 제출 버튼 */}
@@ -141,10 +145,10 @@ export default function CalculatorForm() {
       </form>
 
       {/* 하단 안내 박스 */}
-      <section className={styles.noticeBox}>
+      <section className={styles.noticeBox} aria-labelledby="notice-heading">
         <div className={styles.noticeHeader}>
-          <ShieldCheck size={20} color="#2563eb" />
-          <h3>계산 방식 안내</h3>
+          <ShieldCheck size={20} color="#2563eb" aria-hidden="true" />
+          <h3 id="notice-heading">계산 방식 안내</h3>
         </div>
         <p>
           이 계산기는 2024년 세율 기준으로 간이 계산된 결과입니다. 실제 세액은
