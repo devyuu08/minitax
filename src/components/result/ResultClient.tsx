@@ -26,7 +26,12 @@ export default function ResultClient() {
     return () => clearTimeout(timeout);
   }, []);
 
-  // 예외 처리: 계산 결과가 없을 경우 에러 메시지 표시
+  // 1. 로딩 중인데 result도 없으면 Skeleton 표시
+  if (!result && isLoading) {
+    return <SkeletonResult />;
+  }
+
+  // 2. 로딩 끝났는데 result가 없다면 에러 카드
   if (!result) {
     return (
       <div className={styles.errorCard} role="alert" aria-live="assertive">
@@ -71,11 +76,7 @@ export default function ResultClient() {
       </p>
 
       {/* 조건부 렌더링: 로딩 중이면 Skeleton, 완료되면 ResultCard */}
-      {result && isLoading ? (
-        <SkeletonResult />
-      ) : (
-        <ResultCard result={result} />
-      )}
+      {isLoading ? <SkeletonResult /> : <ResultCard result={result} />}
     </div>
   );
 }
