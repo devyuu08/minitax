@@ -9,6 +9,11 @@ import FloatingMenuButton from "@/components/FloatingMenuButton";
 export const metadata: Metadata = {
   title: "MiniTax",
   description: "프리랜서/개인사업자를 위한 종합소득세 간이 계산기",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-32x32.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

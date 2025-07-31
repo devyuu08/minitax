@@ -1,6 +1,27 @@
 import styles from "./page.module.css";
 import { ShieldCheck, Bot, Lock } from "lucide-react";
 import CalculatorForm from "@/components/calculator/CalculatorForm";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "MiniTax – 종합소득세 계산기",
+  description:
+    "프리랜서와 개인사업자를 위한 스마트한 종합소득세 계산기. 연소득과 필요경비만 입력하면 예상 세금과 AI 설명을 제공합니다.",
+  openGraph: {
+    title: "MiniTax – 종합소득세 계산기",
+    description:
+      "프리랜서와 개인사업자를 위한 스마트한 종합소득세 계산기. 연소득과 필요경비만 입력하면 예상 세금과 AI 설명을 제공합니다.",
+    images: ["/thumbnail.png"],
+    siteName: "MiniTax",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MiniTax – 종합소득세 계산기",
+    description: "AI가 쉽고 빠르게 설명해주는 프리랜서 전용 세금 계산기",
+    images: ["/thumbnail.png"],
+  },
+};
 
 export default function Page() {
   return (
