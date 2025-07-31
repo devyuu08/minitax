@@ -19,6 +19,10 @@
   align-items: stretch;
 }
 
+.flexRow > section {
+  flex: 1;
+}
+
 @media (max-width: 860px) {
   .container {
     padding: 0 0.25rem;

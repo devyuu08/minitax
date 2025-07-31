@@ -36,30 +36,38 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className={styles.container}>
-      <section className={styles.title}>
-        <h1>이용 안내 및 AI 설명 고지</h1>
+      <section className={styles.title} aria-labelledby="pageTitle">
+        <h1 id="pageTitle">이용 안내 및 AI 설명 고지</h1>
         <div />
       </section>
 
       <section>
-        <div className={`${styles.card} ${styles.notice}`}>
+        <div
+          className={`${styles.card} ${styles.notice}`}
+          role="region"
+          aria-labelledby="noticeTitle"
+        >
           <div className={`${styles.iconBox}`}>
-            <AlertTriangle color="#D97706" />
+            <AlertTriangle color="#D97706" aria-hidden="true" />
           </div>
           <div className={styles.textBox}>
-            <h2>중요 안내사항</h2>
+            <h2 id="noticeTitle">중요 안내사항</h2>
             <p>
               MiniTax 서비스를 이용하기 전에 반드시 아래 내용을 확인해주세요.
             </p>
           </div>
         </div>
 
-        <div className={`${styles.card} ${styles.ai}`}>
+        <div
+          className={`${styles.card} ${styles.ai}`}
+          role="region"
+          aria-labelledby="aiNoticeTitle"
+        >
           <div className={`${styles.iconBox}`}>
-            <Bot color="#2563EB" />
+            <Bot color="#2563EB" aria-hidden="true" />
           </div>
           <div className={styles.textBox}>
-            <h2>AI 설명에 대한 고지사항</h2>
+            <h2 id="aiNoticeTitle">AI 설명에 대한 고지사항</h2>
             <p>
               MiniTax에서 제공하는 GPT 기반 AI 설명은{" "}
               <strong>참고용 정보</strong>
@@ -81,12 +89,16 @@ export default function Page() {
           </div>
         </div>
 
-        <div className={`${styles.card} ${styles.accuracy}`}>
+        <div
+          className={`${styles.card} ${styles.accuracy}`}
+          role="region"
+          aria-labelledby="accuracyTitle"
+        >
           <div className={`${styles.iconBox}`}>
-            <Calculator color="#16A34A" />
+            <Calculator color="#16A34A" aria-hidden="true" />
           </div>
           <div className={styles.textBox}>
-            <h2>계산 결과의 정확성</h2>
+            <h2 id="accuracyTitle">계산 결과의 정확성</h2>
             <p>
               MiniTax의 세금 계산 결과는 <strong>예상 금액</strong>이며, 실제
               신고 시 사용할 정확한 세액과 다를 수 있습니다.
@@ -101,18 +113,23 @@ export default function Page() {
               계산 결과와 차이가 날 수 있습니다.
             </p>
             <div>
-              <ShieldCheck color="#166534" /> AI 설명은 일반적인 세법 정보를
-              바탕으로 생성되며, 최신 세법 개정사항이 반영되지 않을 수 있습니다.
+              <ShieldCheck color="#166534" aria-hidden="true" /> AI 설명은
+              일반적인 세법 정보를 바탕으로 생성되며, 최신 세법 개정사항이
+              반영되지 않을 수 있습니다.
             </div>
           </div>
         </div>
 
-        <div className={`${styles.card} ${styles.privacy}`}>
+        <div
+          className={`${styles.card} ${styles.privacy}`}
+          role="region"
+          aria-labelledby="privacyTitle"
+        >
           <div className={`${styles.iconBox}`}>
-            <ShieldUser color="#9333EA" />
+            <ShieldUser color="#9333EA" aria-hidden="true" />
           </div>
           <div className={styles.textBox}>
-            <h2>개인정보 보호</h2>
+            <h2 id="privacyTitle">개인정보 보호</h2>
             <p>
               MiniTax에서 입력하신{" "}
               <strong>모든 정보는 저장되지 않습니다.</strong>
@@ -127,18 +144,22 @@ export default function Page() {
               <strong>보관되지 않으므로,</strong> 안심하고 이용하실 수 있습니다.
             </p>
             <div>
-              <LockKeyholeIcon color="#6B21A8" /> 귀하의 개인정보와 소득정보는
-              철저히 보호되며, 외부로 유출되지 않습니다.
+              <LockKeyholeIcon color="#6B21A8" aria-hidden="true" /> 귀하의
+              개인정보와 소득정보는 철저히 보호되며, 외부로 유출되지 않습니다.
             </div>
           </div>
         </div>
 
-        <div className={`${styles.card} ${styles.guide}`}>
+        <div
+          className={`${styles.card} ${styles.guide}`}
+          role="region"
+          aria-labelledby="guideTitle"
+        >
           <div className={`${styles.iconBox}`}>
-            <Lightbulb color="#4B5563" />
+            <Lightbulb color="#4B5563" aria-hidden="true" />
           </div>
           <div className={styles.textBox}>
-            <h2>권장 이용 방법</h2>
+            <h2 id="guideTitle">권장 이용 방법</h2>
             <ul className={styles.numberList}>
               <li>
                 <span>1.</span>세금 신고 전 &nbsp;
@@ -161,19 +182,28 @@ export default function Page() {
         </div>
       </section>
 
-      <section className={styles.agreementSection}>
+      <section
+        className={styles.agreementSection}
+        role="region"
+        aria-labelledby="agreementTitle"
+      >
         <div className={styles.agreementContent}>
           <div className={`${styles.iconBox} ${styles.purple}`}>
-            <Check color="#f4f4f9ff" />
+            <Check color="#f4f4f9ff" aria-hidden="true" />
           </div>
-          <h2>서비스 이용 동의</h2>
+          <h2 id="agreementTitle">서비스 이용 동의</h2>
           <p>
             MiniTax 서비스를 이용함으로써 위의 모든 안내사항을 이해하고 동의한
             것으로 간주됩니다.
             <br /> 안전하고 현명한 세금 관리를 위해 항상 신중하게 이용해주세요.
           </p>
         </div>
-        <Link href="/about" className={styles.about_Btn}>
+        <Link
+          href="/about"
+          className={styles.about_Btn}
+          role="button"
+          aria-label="서비스 소개 페이지로 이동"
+        >
           서비스 소개 보기
         </Link>
       </section>

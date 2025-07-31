@@ -41,8 +41,8 @@ export default function Page() {
         <div />
       </section>
 
-      <section>
-        <h2>서비스 목적</h2>
+      <section aria-labelledby="purpose-heading">
+        <h2 id="purpose-heading">서비스 목적</h2>
         <p>
           Mini Tax는 복잡한 세법으로 인해 어려움을 겪는 프리랜서와 개인사업자를
           위해 개발된 세금 계산 서비스입니다.
@@ -59,45 +59,61 @@ export default function Page() {
 
       <div className={styles.divider} />
 
-      <section>
-        <h2>이런 분들을 위해 만들었어요</h2>
+      <section aria-labelledby="target-heading">
+        <h2 id="target-heading">이런 분들을 위해 만들었어요</h2>
 
         <div className={styles.cardGrid}>
-          <div className={`${styles.card} ${styles.freelancer}`}>
+          <div
+            className={`${styles.card} ${styles.freelancer}`}
+            role="region"
+            aria-labelledby="freelancer-card"
+          >
             <div className={`${styles.iconBox}`}>
-              <Briefcase color="#4f46e5" />
+              <Briefcase color="#4f46e5" aria-hidden="true" />
             </div>
-            <h3>프리랜서</h3>
+            <h3 id="freelancer-card">프리랜서</h3>
             <p>
               다양한 클라이언트로부터 받는 수입에 대한 세금 계산이 복잡하고
               어려운 분들
             </p>
           </div>
 
-          <div className={`${styles.card} ${styles.business}`}>
+          <div
+            className={`${styles.card} ${styles.business}`}
+            role="region"
+            aria-labelledby="business-card"
+          >
             <div className={`${styles.iconBox}`}>
-              <Store color="#059669" />
+              <Store color="#059669" aria-hidden="true" />
             </div>
-            <h3>개인사업자</h3>
+            <h3 id="business-card">개인사업자</h3>
             <p>
               사업 소득과 필요경비를 정리하여 종합소득세를 미리 계산해보고 싶은
               분들
             </p>
           </div>
 
-          <div className={`${styles.card} ${styles.beginner}`}>
+          <div
+            className={`${styles.card} ${styles.beginner}`}
+            role="region"
+            aria-labelledby="beginner-card"
+          >
             <div className={`${styles.iconBox}`}>
-              <UserPlus color="#8b5cf6" />
+              <UserPlus color="#8b5cf6" aria-hidden="true" />
             </div>
-            <h3>초보 사업자</h3>
+            <h3 id="beginner-card">초보 사업자</h3>
             <p>처음 사업을 시작하여 세금 신고 과정이 낯설고 부담스러운 분들</p>
           </div>
 
-          <div className={`${styles.card} ${styles.taxSaver}`}>
+          <div
+            className={`${styles.card} ${styles.taxSaver}`}
+            role="region"
+            aria-labelledby="taxsaver-card"
+          >
             <div className={`${styles.iconBox}`}>
-              <Lightbulb color="#f97316" />
+              <Lightbulb color="#f97316" aria-hidden="true" />
             </div>
-            <h3>절세 관심자</h3>
+            <h3 id="taxsaver-card">절세 관심자</h3>
             <p>
               실생활에 적용 가능한 절세 전략을 찾고 있으며, 세금 최적화에 관심이
               많은 분들
@@ -108,11 +124,11 @@ export default function Page() {
 
       <div className={styles.divider} />
 
-      <section>
-        <h2>주요 제공 기능</h2>
+      <section aria-labelledby="features-heading">
+        <h2 id="features-heading">주요 제공 기능</h2>
         <div className={styles.featureItem}>
           <div className={`${styles.iconBox} ${styles.blue}`}>
-            <Calculator color="#4f46e5" />
+            <Calculator color="#4f46e5" aria-hidden="true" />
           </div>
           <div className={styles.textBox}>
             <h3>간편한 세금 계산</h3>
@@ -124,7 +140,7 @@ export default function Page() {
         </div>
         <div className={styles.featureItem}>
           <div className={`${styles.iconBox} ${styles.blue}`}>
-            <Bot color="#059669" />
+            <Bot color="#059669" aria-hidden="true" />
           </div>
           <div className={styles.textBox}>
             <h3>AI 기반 친절한 설명</h3>
@@ -136,7 +152,7 @@ export default function Page() {
         </div>
         <div className={styles.featureItem}>
           <div className={`${styles.iconBox} ${styles.blue}`}>
-            <BadgePercent color="#8b5cf6" />
+            <BadgePercent color="#8b5cf6" aria-hidden="true" />
           </div>
           <div className={styles.textBox}>
             <h3> 맞춤형 절세 가이드</h3>
@@ -148,7 +164,7 @@ export default function Page() {
         </div>
         <div className={styles.featureItem}>
           <div className={`${styles.iconBox} ${styles.blue}`}>
-            <ShieldCheck color="#f53325ff" />
+            <ShieldCheck color="#f53325ff" aria-hidden="true" />
           </div>
           <div className={styles.textBox}>
             <h3>신뢰할 수 있는 계산</h3>
@@ -163,12 +179,15 @@ export default function Page() {
 
       <div className={styles.divider} />
 
-      <section className={styles.promiseSection}>
+      <section
+        className={styles.promiseSection}
+        aria-labelledby="promise-heading"
+      >
         <div className={styles.promiseContent}>
           <div className={`${styles.iconBox} ${styles.purple}`}>
-            <Heart color="#f4f4f9ff" />
+            <Heart color="#f4f4f9ff" aria-hidden="true" />
           </div>
-          <h2>우리의 약속</h2>
+          <h2 id="promise-heading">우리의 약속</h2>
           <p>
             MiniTax는 복잡한 세법을 누구나 이해할 수 있도록 만드는 것이
             사명입니다.
@@ -176,7 +195,7 @@ export default function Page() {
             만들어가겠습니다.
           </p>
         </div>
-        <Link href="/policy" className={styles.policy_Btn}>
+        <Link href="/policy" className={styles.policy_Btn} role="button">
           이용 안내 및 주의사항 확인하기
         </Link>
       </section>
