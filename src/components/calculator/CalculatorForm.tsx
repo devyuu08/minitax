@@ -8,12 +8,14 @@ import { useRouter } from "next/navigation";
 import calculateTax from "@/lib/calculateTax";
 
 export default function CalculatorForm() {
-  const [income, setIncome] = useState("");
-  const [expense, setExpense] = useState("");
-  const [isActive, setIsActive] = useState(false);
+  const [income, setIncome] = useState(""); // 연소득 입력값
+  const [expense, setExpense] = useState(""); // 필요경비 입력값
+  const [isActive, setIsActive] = useState(false); // 제출 버튼 활성 상태
 
+  // 첫 렌더링 시 연소득 필드에 자동 포커싱
   const incomeRef = useRef<HTMLInputElement | null>(null);
 
+  // 전역 계산 결과 저장 함수
   const { setResult } = useTaxContext();
   const router = useRouter();
 
@@ -21,10 +23,12 @@ export default function CalculatorForm() {
     incomeRef.current?.focus();
   }, []);
 
+  // 입력값 유효성 검증 및 버튼 활성화 제어
   useEffect(() => {
     const parsedIncome = parseInt(income.replace(/,/g, ""), 10);
     const parsedExpense = parseInt(expense.replace(/,/g, ""), 10);
 
+    // 입력값이 숫자이며 유효할 때만 버튼 활성화
     if (
       !isNaN(parsedIncome) &&
       parsedIncome > 0 &&
@@ -37,11 +41,13 @@ export default function CalculatorForm() {
     }
   }, [income, expense]);
 
+  // 숫자 입력값에 쉼표(,) 포맷 적용
   const formatNumber = (value: string) => {
     const number = value.replace(/[^0-9]/g, "");
     return number ? Number(number).toLocaleString() : "";
   };
 
+  // 폼 제출 처리
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -50,6 +56,7 @@ export default function CalculatorForm() {
 
     if (isNaN(incomeValue) || isNaN(expenseValue)) return;
 
+    // 계산 결과 생성 및 전역 상태 저장
     const result = calculateTax({ income: incomeValue, expense: expenseValue });
 
     setResult(result);
@@ -59,7 +66,7 @@ export default function CalculatorForm() {
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit}>
-        {/* 상단 제목 영역 */}
+        {/* 상단 타이틀 및 설명 */}
         <div className={styles.formHeader}>
           <div className={styles.iconWrapper}>
             <ScanLine size={28} color="#fff" />
@@ -127,7 +134,7 @@ export default function CalculatorForm() {
           <p id="expenseDesc"> 사업 관련 지출, 재료비, 임차료 등</p>
         </div>
 
-        {/* 제출 버튼 */}
+        {/* 제출 버튼 – 입력값이 유효할 때만 활성화 */}
         <button
           type="submit"
           className={`${styles.submit} ${!isActive ? styles.disabled : ""}`}
@@ -144,7 +151,7 @@ export default function CalculatorForm() {
         </button>
       </form>
 
-      {/* 하단 안내 박스 */}
+      {/* 하단 안내 섹션 – 계산 기준 고지 */}
       <section className={styles.noticeBox} aria-labelledby="notice-heading">
         <div className={styles.noticeHeader}>
           <ShieldCheck size={20} color="#2563eb" aria-hidden="true" />

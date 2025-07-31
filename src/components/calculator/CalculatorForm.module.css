@@ -25,6 +25,7 @@
   gap: 0.1rem;
 }
 
+/* 아이콘 배경 – 그라디언트 원형 박스 */
 .iconWrapper {
   display: flex;
   align-items: center;
@@ -46,6 +47,7 @@
   color: #6b7280;
 }
 
+/* 입력 필드 wrapper */
 .field {
   display: flex;
   flex-direction: column;
@@ -59,6 +61,7 @@
   color: #111827;
 }
 
+/* 라벨 왼쪽 점 표시 (시각적 구분용) */
 .labelRow {
   display: flex;
   align-items: center;
@@ -79,11 +82,13 @@
   border-radius: 5px;
 }
 
+/* input field wrapper – input과 단위 위치 설정 */
 .inputWrapper {
   position: relative;
   width: 100%;
 }
 
+/* 입력창 기본 스타일 */
 .inputWrapper input {
   width: 100%;
   font-size: 1.5rem;
@@ -95,6 +100,7 @@
   outline: none;
 }
 
+/* 포커스 시 시각 효과 */
 .inputWrapper input:focus {
   outline: none;
   border: 2px solid #6366f1;
@@ -103,6 +109,7 @@
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
+/* '원' 단위 텍스트 */
 .inputSuffix {
   position: absolute;
   right: 1rem;
@@ -143,6 +150,7 @@
   background: linear-gradient(90deg, #2563eb, #4f46e5);
 }
 
+/* 비활성화 상태 (입력값 부족 시) */
 .disabled {
   background: #e5e7eb; /* Tailwind gray-200 */
   color: #9ca3af; /* Tailwind gray-400 */
@@ -151,6 +159,7 @@
   pointer-events: none;
 }
 
+/* 계산 방식 안내 박스 */
 .noticeBox {
   background-color: #f9fbff;
   border: 1px solid #e0e7ff;
@@ -180,6 +189,7 @@
   white-space: pre-line;
 }
 
+/* 안내 항목 리스트 */
 .noticeList {
   list-style: disc;
   padding-left: 1.5rem;
@@ -188,13 +198,14 @@
   line-height: 1.75;
 }
 
+/* 아이콘 배경 강조 */
 .noticeHeader svg {
   background-color: #ebf1f7;
   padding: 0.2rem;
   border-radius: 50%;
 }
 
-/* 반응형 */
+/* 반응형 스타일 – 태블릿 이하 */
 @media (max-width: 768px) {
   .container {
     max-width: 440px;
@@ -250,6 +261,7 @@
   }
 }
 
+/* 모바일 대응 – 480px 이하 */
 @media (max-width: 480px) {
   .formTitle {
     font-size: 1.05rem;
@@ -292,6 +304,7 @@
   }
 }
 
+/* 초소형 기기 대응 – 360px 이하 */
 @media (max-width: 360px) {
   .formTitle {
     font-size: 1rem;

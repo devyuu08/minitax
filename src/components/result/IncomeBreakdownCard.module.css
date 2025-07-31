@@ -4,7 +4,7 @@
   padding: 2rem;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
   flex: 1 1 0;
-  max-width: 100%;
+  max-width: 100%; /* 일정한 카드 높이 확보 */
   min-height: 320px;
 }
 
@@ -24,6 +24,7 @@
   justify-content: center;
 }
 
+/* 아이콘 배경 컬러 */
 .blue {
   background: #eff0f2;
 }
@@ -59,16 +60,19 @@
   font-size: 1.05rem;
 }
 
+/* 소득 값 */
 .income {
   color: #111827;
   font-weight: 600;
 }
 
+/* 지출 값 */
 .expense {
   color: #e53935;
   font-weight: 500;
 }
 
+/* 카드 하단 요약 박스 (과세표준) */
 .footer {
   background-color: #f1f5f9;
   padding: 1rem 1.25rem;
@@ -80,96 +84,12 @@
   color: #111827;
 }
 
-.taxableIncome {
-  font-weight: bold;
-}
-.card {
-  background-color: #ffffff;
-  border-radius: 1.5rem;
-  padding: 2rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-  flex: 1 1 0;
-  max-width: 100%;
-  height: 100%;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-
-.iconBox {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.blue {
-  background: #eff0f2;
-}
-
-.title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-.subtitle {
-  font-size: 0.9rem;
-  color: #64748b;
-  margin-top: 0.25rem;
-}
-
-.divider {
-  height: 1px;
-  background-color: #e2e8f0;
-  margin: 1rem 0;
-}
-
-.list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.75rem 0;
-}
-
-.list li {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-  font-size: 1.05rem;
-}
-
-.income {
-  color: #111827;
-  font-weight: 600;
-}
-
-.expense {
-  color: #e53935;
-  font-weight: 500;
-}
-
-.footer {
-  background-color: #f1f5f9;
-  padding: 1rem 1.25rem;
-  border-radius: 0.75rem;
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #111827;
-}
-
+/* 과세표준 숫자 강조 */
 .taxableIncome {
   font-weight: bold;
 }
 
-/* 반응형 */
+/* 반응형 스타일 - 태블릿 이하 */
 @media (max-width: 768px) {
   .card {
     padding: 1.5rem;
@@ -196,6 +116,7 @@
   }
 }
 
+/* 더 작은 화면 대응 (모바일) */
 @media (max-width: 420px) {
   .card {
     padding: 1.25rem;

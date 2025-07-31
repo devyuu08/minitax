@@ -1,3 +1,7 @@
+// 종합소득세 결과 페이지 컴포넌트
+// - 페이지 메타데이터 정의
+// - 실제 UI는 클라이언트 컴포넌트인 ResultClient에서 처리됨
+
 import ResultClient from "@/components/result/ResultClient";
 import { Metadata } from "next";
 

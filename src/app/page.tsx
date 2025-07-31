@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className={styles.container}>
-      {/* Hero Section */}
+      {/* 서비스 소개 영역 */}
       <header className={styles.headerSection} role="banner">
         <h1>MiniTax</h1>
 
@@ -40,6 +40,8 @@ export default function Home() {
           세금을 <br /> 계산하고 쉽게 설명해드립니다.
         </p>
       </header>
+
+      {/* CTA 버튼: 계산기 페이지로 이동 */}
       <Link
         href="/calculator"
         className={styles.calculator_Btn}
@@ -48,7 +50,7 @@ export default function Home() {
         지금 계산 시작하기
       </Link>
 
-      {/* Feature Section */}
+      {/* 주요기능 안내 */}
       <section className={styles.featureList}>
         <div className={styles.featureItem}>
           <div className={`${styles.iconBox} ${styles.blue}`}>

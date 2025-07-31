@@ -36,11 +36,13 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className={styles.container}>
+      {/* 타이틀 영역 – 페이지 소개 헤딩 */}
       <section className={styles.title}>
         <h1>MiniTax란?</h1>
         <div />
       </section>
 
+      {/* 1. 서비스 목적 설명 */}
       <section aria-labelledby="purpose-heading">
         <h2 id="purpose-heading">서비스 목적</h2>
         <p>
@@ -59,10 +61,12 @@ export default function Page() {
 
       <div className={styles.divider} />
 
+      {/* 2. 주요 타겟 사용자 소개 */}
       <section aria-labelledby="target-heading">
         <h2 id="target-heading">이런 분들을 위해 만들었어요</h2>
 
         <div className={styles.cardGrid}>
+          {/* 프리랜서 대상 */}
           <div
             className={`${styles.card} ${styles.freelancer}`}
             role="region"
@@ -78,6 +82,7 @@ export default function Page() {
             </p>
           </div>
 
+          {/* 개인사업자 대상 */}
           <div
             className={`${styles.card} ${styles.business}`}
             role="region"
@@ -93,6 +98,7 @@ export default function Page() {
             </p>
           </div>
 
+          {/* 초보 사업자 */}
           <div
             className={`${styles.card} ${styles.beginner}`}
             role="region"
@@ -105,6 +111,7 @@ export default function Page() {
             <p>처음 사업을 시작하여 세금 신고 과정이 낯설고 부담스러운 분들</p>
           </div>
 
+          {/* 절세 관심자 */}
           <div
             className={`${styles.card} ${styles.taxSaver}`}
             role="region"
@@ -124,8 +131,11 @@ export default function Page() {
 
       <div className={styles.divider} />
 
+      {/* 3. 주요 기능 소개 섹션 */}
       <section aria-labelledby="features-heading">
         <h2 id="features-heading">주요 제공 기능</h2>
+
+        {/* 간편 계산 기능 */}
         <div className={styles.featureItem}>
           <div className={`${styles.iconBox} ${styles.blue}`}>
             <Calculator color="#4f46e5" aria-hidden="true" />
@@ -138,6 +148,8 @@ export default function Page() {
             </p>
           </div>
         </div>
+
+        {/* AI 설명 기능 */}
         <div className={styles.featureItem}>
           <div className={`${styles.iconBox} ${styles.blue}`}>
             <Bot color="#059669" aria-hidden="true" />
@@ -150,6 +162,8 @@ export default function Page() {
             </p>
           </div>
         </div>
+
+        {/* 절세 가이드 기능 */}
         <div className={styles.featureItem}>
           <div className={`${styles.iconBox} ${styles.blue}`}>
             <BadgePercent color="#8b5cf6" aria-hidden="true" />
@@ -162,6 +176,8 @@ export default function Page() {
             </p>
           </div>
         </div>
+
+        {/* 계산 기준 설명 */}
         <div className={styles.featureItem}>
           <div className={`${styles.iconBox} ${styles.blue}`}>
             <ShieldCheck color="#f53325ff" aria-hidden="true" />
@@ -179,6 +195,7 @@ export default function Page() {
 
       <div className={styles.divider} />
 
+      {/* 4. 브랜드 메시지 – 우리의 약속 */}
       <section
         className={styles.promiseSection}
         aria-labelledby="promise-heading"
@@ -195,6 +212,8 @@ export default function Page() {
             만들어가겠습니다.
           </p>
         </div>
+
+        {/* 정책 페이지 이동 버튼 */}
         <Link href="/policy" className={styles.policy_Btn} role="button">
           이용 안내 및 주의사항 확인하기
         </Link>

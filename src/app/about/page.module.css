@@ -45,18 +45,15 @@
   opacity: 0.6;
 }
 
-.targetUsers {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
+/* 카드 그리드(사용자 유형) – 반응형 컬럼 구성 */
+.targetUsers,
 .cardGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
+/* 사용자 유형 및 기능 카드 공통 스타일 */
 .card {
   background-color: #f9fafb;
   border-radius: 1rem;
@@ -78,7 +75,7 @@
   color: #4b5563;
 }
 
-/* 배경색/아이콘 색상 */
+/* 카드별 배경색 / 테두리 색상 */
 .freelancer {
   background-color: #eef2ff;
   border-color: #c7d2fe;
@@ -99,7 +96,7 @@
   border-color: #fdba74;
 }
 
-/* 아이콘 박스 */
+/* 카드 내부 아이콘 박스 – 중앙 정렬 원형 박스 */
 .iconBox {
   width: 56px;
   height: 56px;
@@ -109,11 +106,13 @@
   justify-content: center;
 }
 
+/* 아이콘 크기 통일 */
 .iconBox svg {
   width: 1.5rem;
   height: 1.5rem;
 }
 
+/* 카드별 아이콘 박스 배경색 */
 .card.freelancer .iconBox {
   background-color: #e0e7ff;
 }
@@ -138,6 +137,7 @@
   margin-bottom: 2rem;
 }
 
+/* 기능 설명 영역 공통 텍스트 정렬 */
 .textBox {
   display: flex;
   flex-direction: column;
@@ -158,6 +158,7 @@
   margin: 0;
 }
 
+/* 기능 아이콘용 공통 배경색 */
 .blue {
   background-color: #e0e7ff;
 }
@@ -189,6 +190,7 @@
   margin-bottom: 2rem;
 }
 
+/* 약속 섹션 내부 콘텐츠 정렬 */
 .promiseContent {
   display: flex;
   flex-direction: column;
@@ -196,6 +198,7 @@
   padding-top: 2rem;
 }
 
+/* 이용 안내 버튼 스타일 */
 .policy_Btn {
   background: white;
   padding: 0.75rem 1.5rem;
@@ -213,12 +216,12 @@
   transform: translateY(-1px);
 }
 
+/* 체크 아이콘 배경 전용 퍼플 그라디언트 */
 .purple {
   background: linear-gradient(90deg, #93c5fd, #c4b5fd, #a5b4fc);
 }
 
-/* 반응형 */
-
+/* 반응형 스타일 – 모바일 화면 대응 */
 @media (max-width: 768px) {
   .container {
     padding: 1.5rem 1rem;
@@ -241,7 +244,7 @@
   }
 
   .cardGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 모바일에서 1열로 정렬 */
   }
 
   .card {

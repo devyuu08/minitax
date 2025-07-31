@@ -6,6 +6,7 @@
   margin: 0 auto;
 }
 
+/* 상단 바: "다시 계산하기" 버튼이 우측에 배치됨 */
 .topBar {
   width: 100%;
   display: flex;
@@ -13,6 +14,7 @@
   margin-bottom: 1rem;
 }
 
+/* "다시 계산하기" 버튼 스타일 */
 .recalculateButton {
   background-color: #f1f5f9;
   color: #1e3a8a;
@@ -28,6 +30,7 @@
   background-color: #e0f2fe;
 }
 
+/* 계산 완료 배지 (상태 알림용) */
 .badge {
   display: inline-block;
   background-color: #e0f2fe;
@@ -78,6 +81,7 @@
   line-height: 1.6;
 }
 
+/* 홈으로 돌아가기 버튼 스타일 */
 .backButton {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -93,7 +97,7 @@
   background-color: #334155; /* slate-800 */
 }
 
-/* 반응형 */
+/* 반응형 스타일 - 모바일 대응 */
 
 @media (max-width: 480px) {
   .recalculateButton {

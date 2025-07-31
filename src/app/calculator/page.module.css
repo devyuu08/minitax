@@ -18,6 +18,7 @@
   color: #374151;
 }
 
+/* '2024년 세율 기준' 뱃지 */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -30,6 +31,7 @@
   color: #6b7280;
 }
 
+/* 뱃지 왼쪽 초록 원형 */
 .greenDot {
   width: 8px;
   height: 8px;
@@ -55,6 +57,7 @@
   text-align: center;
 }
 
+/* 서비스 특징 리스트 (3개) */
 .featureList {
   display: flex;
   justify-content: center;
@@ -62,6 +65,7 @@
   gap: 2rem;
 }
 
+/* 각 특징 항목 (아이콘 + 텍스트) */
 .featureItem {
   display: flex;
   align-items: center;
@@ -70,7 +74,7 @@
   color: #374151;
 }
 
-/* 반응형 */
+/* 반응형 대응 – 모바일 기준 */
 @media (max-width: 768px) {
   .container {
     gap: 5px;

@@ -4,6 +4,9 @@ import { TaxResult } from "@/types/tax";
 import styles from "./SummaryCards.module.css";
 import { Calculator, DollarSignIcon, SearchCheckIcon } from "lucide-react";
 
+// SummaryCards.tsx
+// ⎯ 예상 세금 결과를 요약하여 3개의 카드(총소득, 순소득, 예상 세액)로 보여주는 컴포넌트
+
 interface SummaryCardProps {
   result: TaxResult;
 }
@@ -20,7 +23,7 @@ export default function SummaryCards({ result }: SummaryCardProps) {
         세금 요약 카드
       </h2>
 
-      {/* 총 소득 */}
+      {/* 1. 총소득 카드 – 연간 총 수입을 나타냄 */}
       <article className={styles.card} aria-labelledby="total-income-heading">
         <h3 id="total-income-heading" className="sr-only">
           총 소득
@@ -40,7 +43,7 @@ export default function SummaryCards({ result }: SummaryCardProps) {
         </div>
       </article>
 
-      {/* 순소득 */}
+      {/* 2. 순소득 카드 – 경비 제외 후 과세 대상 소득 */}
       <article className={styles.card} aria-labelledby="net-income-heading">
         <h3 id="net-income-heading" className="sr-only">
           순소득
@@ -60,7 +63,7 @@ export default function SummaryCards({ result }: SummaryCardProps) {
         </div>
       </article>
 
-      {/* 예상 세액 */}
+      {/* 3. 예상 세액 카드 – 실제 납부해야 할 총 세금 */}
       <article className={styles.card} aria-labelledby="estimated-tax-heading">
         <h3 id="estimated-tax-heading" className="sr-only">
           예상 세액
