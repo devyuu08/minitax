@@ -18,20 +18,30 @@ export default function GptSection({
   status = null,
   fallback,
 }: GptSectionProps) {
+  const sectionId = `gpt-section-title-${title
+    .replace(/\s/g, "")
+    .toLowerCase()}`;
+
   return (
-    <div className={styles.gpt_wrapper}>
+    <section
+      className={styles.gpt_wrapper}
+      role="region"
+      aria-labelledby={sectionId}
+    >
       <div className={styles.title}>
         {icon}
-        <h3>{title}</h3>
+        <h3 id={sectionId}>{title}</h3>
       </div>
 
       {status === "loading" && fallback ? (
-        <div className={styles.loading}>
+        <div className={styles.loading} aria-live="polite">
           <Loader2 className={styles.spinner} />
           {fallback}
         </div>
       ) : status === "error" && fallback ? (
-        <p className={styles.error}>{fallback}</p>
+        <p className={styles.error} aria-live="polite">
+          {fallback}
+        </p>
       ) : content ? (
         <ul className={styles.list}>
           {content
@@ -42,6 +52,6 @@ export default function GptSection({
             ))}
         </ul>
       ) : null}
-    </div>
+    </section>
   );
 }
