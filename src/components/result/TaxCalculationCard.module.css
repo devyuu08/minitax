@@ -186,3 +186,87 @@
     border-radius: 0.6rem;
   }
 }
+
+@media (max-width: 375px) {
+  .card {
+    padding: 1rem;
+  }
+
+  .iconBox {
+    width: 34px;
+    height: 34px;
+  }
+
+  .title {
+    font-size: 0.9rem;
+  }
+
+  .sub {
+    font-size: 0.7rem;
+  }
+
+  .value {
+    font-size: 0.9rem;
+  }
+
+  .badgeBlue,
+  .badgeGreen {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.35rem;
+  }
+
+  .list li {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .totalLabel {
+    font-size: 0.85rem;
+  }
+
+  .totalAmount {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .card {
+    padding: 0.85rem;
+  }
+
+  .iconBox {
+    width: 30px;
+    height: 30px;
+  }
+
+  .title {
+    font-size: 0.85rem;
+  }
+
+  .sub {
+    font-size: 0.68rem;
+  }
+
+  .value {
+    font-size: 0.85rem;
+  }
+
+  .badgeBlue,
+  .badgeGreen {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.3rem;
+  }
+
+  .list li {
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .totalLabel {
+    font-size: 0.8rem;
+  }
+
+  .totalAmount {
+    font-size: 0.9rem;
+  }
+}
