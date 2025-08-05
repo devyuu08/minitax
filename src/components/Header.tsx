@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 
 /**
@@ -20,8 +21,12 @@ const gradientFlow = keyframes`
   }
 `;
 
-const HeaderWrapper = styled.header`
-  // 상단 고정 헤더 스타일
+const HeaderWrapper = styled.header.attrs<{ $scrolled: boolean }>((props) => ({
+  style: {
+    backgroundColor: props.$scrolled ? "#ffffff" : "transparent",
+    boxShadow: props.$scrolled ? "0 2px 8px rgba(0, 0, 0, 0.06)" : "none",
+  },
+}))`
   position: fixed;
   top: 0;
   left: 0;
@@ -31,7 +36,7 @@ const HeaderWrapper = styled.header`
   align-items: center;
   height: 60px;
   padding: 0 2rem;
-  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 
   @media (max-width: 768px) {
     padding: 0 1rem;
@@ -75,8 +80,21 @@ const AnimatedText = styled.span`
 `;
 
 export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const y = window.scrollY;
+      setIsScrolled(y > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <HeaderWrapper>
+    <HeaderWrapper $scrolled={isScrolled}>
       <StyledLink href="/">
         <AnimatedText>MiniTax</AnimatedText>
       </StyledLink>
