@@ -307,3 +307,117 @@
     height: 20px;
   }
 }
+
+/* 480px 이하 - 일반 소형 스마트폰 */
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0.75rem;
+  }
+
+  .title h1 {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+  }
+
+  .card {
+    padding: 0.75rem;
+  }
+
+  .card h3 {
+    font-size: 0.95rem;
+  }
+
+  .card p {
+    font-size: 0.85rem;
+  }
+
+  .promiseSection h2 {
+    font-size: 1.25rem;
+  }
+
+  .promiseSection p {
+    font-size: 0.95rem;
+  }
+
+  .policy_Btn {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .iconBox {
+    width: 44px;
+    height: 44px;
+  }
+
+  .iconBox svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* 375px 이하 - iPhone SE, 갤럭시 Z Flip 등 */
+@media (max-width: 375px) {
+  .title h1 {
+    font-size: 1.75rem;
+  }
+
+  .card h3 {
+    font-size: 0.9rem;
+  }
+
+  .card p {
+    font-size: 0.8rem;
+  }
+
+  .featureItem h3 {
+    font-size: 0.95rem;
+  }
+
+  .featureItem p {
+    font-size: 0.8rem;
+  }
+
+  .promiseSection p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
+/* 320px 이하a */
+@media (max-width: 340px) {
+  .container {
+    padding: 0.75rem;
+  }
+
+  .title h1 {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    padding: 0.5rem;
+  }
+
+  .card p {
+    font-size: 0.75rem;
+  }
+
+  .promiseSection p {
+    font-size: 0.85rem;
+  }
+
+  .policy_Btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .iconBox {
+    width: 40px;
+    height: 40px;
+  }
+
+  .iconBox svg {
+    width: 16px;
+    height: 16px;
+  }
+}
