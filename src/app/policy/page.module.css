@@ -330,3 +330,144 @@
     padding: 0.5rem 1rem;
   }
 }
+
+/* 480px 이하 */
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0.75rem;
+  }
+
+  .card h2 {
+    font-size: 0.95rem;
+  }
+
+  .card p {
+    font-size: 0.8rem;
+  }
+
+  .iconBox {
+    width: 36px;
+    height: 36px;
+  }
+
+  .iconBox svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .textBox > div:last-child {
+    font-size: 0.8rem;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .title h1 {
+    font-size: 1.5rem;
+  }
+
+  .about_Btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .agreementSection h2 {
+    font-size: 1.3rem;
+  }
+
+  .agreementSection p {
+    font-size: 0.9rem;
+  }
+
+  .numberList li {
+    font-size: 0.9rem;
+  }
+
+  .numberList span {
+    font-size: 0.95rem;
+    width: 1.2rem;
+  }
+}
+
+/* 375px 이하 */
+@media (max-width: 375px) {
+  .card {
+    padding: 0.5rem;
+  }
+
+  .card p {
+    font-size: 0.75rem;
+  }
+
+  .card h2 {
+    font-size: 0.9rem;
+  }
+
+  .textBox > div:last-child {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .iconBox {
+    width: 32px;
+    height: 32px;
+  }
+
+  .iconBox svg {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  .title h1 {
+    font-size: 1.35rem;
+  }
+
+  .agreementSection h2 {
+    font-size: 1.2rem;
+  }
+
+  .agreementSection p {
+    font-size: 0.85rem;
+  }
+
+  .about_Btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.75rem;
+  }
+}
+
+/* 340px 이하 */
+@media (max-width: 340px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .card p,
+  .textBox > div:last-child {
+    font-size: 0.7rem;
+  }
+
+  .card h2 {
+    font-size: 0.85rem;
+  }
+
+  .iconBox {
+    width: 28px;
+    height: 28px;
+  }
+
+  .iconBox svg {
+    width: 0.85rem;
+    height: 0.85rem;
+  }
+
+  .title h1 {
+    font-size: 1.25rem;
+  }
+
+  .agreementSection p {
+    font-size: 0.8rem;
+  }
+
+  .about_Btn {
+    font-size: 0.75rem;
+  }
+}

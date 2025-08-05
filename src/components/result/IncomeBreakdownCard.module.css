@@ -120,10 +120,12 @@
 @media (max-width: 420px) {
   .card {
     padding: 1.25rem;
+    border-radius: 1rem;
   }
 
   .list li {
     margin-bottom: 1.25rem;
+    font-size: 0.9rem;
   }
 
   .footer {
@@ -141,5 +143,62 @@
 
   .subtitle {
     font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .card {
+    padding: 1rem;
+  }
+
+  .iconBox {
+    width: 34px;
+    height: 34px;
+  }
+
+  .title {
+    font-size: 0.9rem;
+  }
+
+  .subtitle {
+    font-size: 0.7rem;
+  }
+
+  .list li {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .card {
+    padding: 0.85rem;
+  }
+
+  .iconBox {
+    width: 30px;
+    height: 30px;
+  }
+
+  .title {
+    font-size: 0.85rem;
+  }
+
+  .subtitle {
+    font-size: 0.68rem;
+  }
+
+  .list li {
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer {
+    font-size: 0.85rem;
+    padding: 0.75rem;
   }
 }

@@ -104,3 +104,48 @@
     text-align: center;
   }
 }
+
+/* 275px 이하 */
+@media (max-width: 375px) {
+  .gpt_wrapper {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: 0.95rem;
+    gap: 0.3rem;
+  }
+
+  .list {
+    font-size: 0.85rem;
+    gap: 0.3rem;
+  }
+
+  .loading {
+    font-size: 0.85rem;
+  }
+}
+
+/* 340px 이하 */
+@media (max-width: 340px) {
+  .gpt_wrapper {
+    margin: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 10px;
+  }
+
+  .title {
+    font-size: 0.9rem;
+  }
+
+  .list {
+    font-size: 0.8rem;
+  }
+
+  .loading {
+    font-size: 0.8rem;
+    gap: 0.25rem;
+  }
+}

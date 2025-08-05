@@ -304,8 +304,8 @@
   }
 }
 
-/* 초소형 기기 대응 – 360px 이하 */
-@media (max-width: 360px) {
+/* 375px 이하 */
+@media (max-width: 375px) {
   .formTitle {
     font-size: 1rem;
   }
@@ -321,11 +321,37 @@
   }
 
   .noticeBox p {
-    font-size: 0.7rem;
-    line-height: 1.45;
+    font-size: 0.75rem;
+    line-height: 1.5;
   }
 
   .noticeBox h3 {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* 340px 이하 */
+@media (max-width: 340px) {
+  .formTitle {
+    font-size: 0.95rem;
+  }
+
+  .inputWrapper input {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.6rem 0.6rem 0.65rem;
+  }
+
+  .submit {
+    font-size: 0.8rem;
+    padding: 0.65rem;
+  }
+
+  .noticeBox p {
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  .noticeBox h3 {
+    font-size: 0.85rem;
   }
 }
